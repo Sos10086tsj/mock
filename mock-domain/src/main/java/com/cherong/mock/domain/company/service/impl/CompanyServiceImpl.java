@@ -11,7 +11,7 @@ import com.cherong.mock.domain.api.company.service.CompanyService;
  * Auth:Paris
  * Date:Apr 19, 2016
 **/
-@Service
+@Service("companyService")
 public class CompanyServiceImpl extends BaseServiceImpl<Company, Long> implements CompanyService{
 
 }

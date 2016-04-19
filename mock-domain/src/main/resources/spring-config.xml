@@ -30,4 +30,5 @@
 	
 	<import resource="bank-datasource.xml" />
 
+	<import resource="dubbo-provider.xml" />
 </beans>

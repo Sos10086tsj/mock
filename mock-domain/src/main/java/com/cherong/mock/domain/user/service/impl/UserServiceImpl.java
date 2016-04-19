@@ -35,7 +35,7 @@ import com.cherong.mock.domain.user.repository.UserRoleRepository;
  * Auth:Paris
  * Date:Apr 19, 2016
 **/
-@Service
+@Service("userService")
 public class UserServiceImpl extends BaseServiceImpl<User, Long> implements UserService{
 	@Resource
 	private UserRoleRepository userRoleRepository;

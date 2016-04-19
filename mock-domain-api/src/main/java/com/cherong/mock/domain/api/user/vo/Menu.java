@@ -1,5 +1,6 @@
 package com.cherong.mock.domain.api.user.vo;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,7 +12,11 @@ import com.cherong.mock.domain.api.rbac.model.SysResource;
  * Auth:Paris
  * Date:Apr 19, 2016
 **/
-public class Menu {
+public class Menu implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 741054676052478361L;
 	private String code;
 	private String name;
 	private String url;

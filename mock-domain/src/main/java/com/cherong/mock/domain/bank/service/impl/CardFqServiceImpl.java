@@ -26,7 +26,7 @@ import com.cherong.mock.domain.bank.repository.CardFqRepository;
  * Auth:Paris
  * Date:Apr 7, 2016
 **/
-@Service
+@Service("cardFqService")
 public class CardFqServiceImpl extends BaseServiceImpl<CardFq, Long> implements CardFqService{
 	@Resource
 	private CardFqRepository repository;
