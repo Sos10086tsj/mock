@@ -6,8 +6,8 @@ import javax.annotation.Resource;
 
 import org.junit.Test;
 
-import com.cherong.mock.domain.bank.model.FqView;
-import com.cherong.mock.domain.bank.service.FqViewService;
+import com.cherong.mock.domain.bank.model.Card;
+import com.cherong.mock.domain.bank.service.CardService;
 import com.cherong.mock.domain.base.BaseBankTestService;
 
 /**
@@ -15,14 +15,13 @@ import com.cherong.mock.domain.base.BaseBankTestService;
  * Auth:Paris
  * Date:Apr 7, 2016
 **/
-public class FqViewServiceImplTest extends BaseBankTestService{
-
+public class CardServiceImplTest extends BaseBankTestService{
 	@Resource
-	private FqViewService fqViewService;
+	private CardService cardViewService;
 	@Test
 	public void testFindOne() {
-		FqView fv = this.fqViewService.findOne("231");
-		assertNull(fv);
+		Card cv = this.cardViewService.findOne(62223318881031701l);
+		assertNull(cv);
 		System.out.println(">>>>>>>>>>>>>>>>pass");
 	}
 

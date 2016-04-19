@@ -52,10 +52,18 @@
 		<zkclient.version>0.1</zkclient.version>
 		<!-- ehcache -->
 		<ehcache.version>2.9.0</ehcache.version>
+		
+		<mysql.connector.verison>5.1.6</mysql.connector.verison>
 	</properties>
 
 	<dependencyManagement>
 		<dependencies>
+			<!-- mysql -->
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>${mysql.connector.verison}</version>
+		</dependency>
 			<!-- junit -->
 			<dependency>
 				<groupId>junit</groupId>

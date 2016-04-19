@@ -46,7 +46,7 @@
 		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
 		<property name="dataSource" ref="bankDataSource" />
 		<property name="jpaVendorAdapter" ref="bankHibernateJpaVendorAdapter" />
-		<property name="packagesToScan" value="com.cherong.mock.domain.bank.**.model" /><!--待扫描的实体类包，不再需要persistence.xml了 -->
+		<property name="packagesToScan" value="com.cherong.mock.domain.**.model" /><!--待扫描的实体类包，不再需要persistence.xml了 -->
 		<property name="jpaProperties">
 			<props>
 				<prop key="hibernate.connection.useUnicode">true</prop>
@@ -69,7 +69,7 @@
 	</bean>
 
 	<!-- Spring Data Jpa配置 -->
-	<jpa:repositories base-package="com.cherong.mock.domain.bank.**.repository"
+	<jpa:repositories base-package="com.cherong.mock.domain.**.repository"
 		transaction-manager-ref="bankTransactionManager"
 		entity-manager-factory-ref="bankEntityManagerFactory" />
 
@@ -93,7 +93,7 @@
 	<aop:config expose-proxy="true" proxy-target-class="true">
 		<!-- 事务开在servier层 -->
 		<aop:pointcut id="bankTxPointcut"
-			expression="execution(* com.cherong.mock.domain.bank..service..*.*(..))" />
+			expression="execution(* com.cherong.mock.domain..service..*.*(..))" />
 		<aop:advisor id="txAdvisor" advice-ref="bankTxAdvice"
 			pointcut-ref="bankTxPointcut" />
 	</aop:config>

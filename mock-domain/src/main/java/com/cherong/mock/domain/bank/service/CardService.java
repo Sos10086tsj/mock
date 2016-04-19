@@ -1,6 +1,6 @@
 package com.cherong.mock.domain.bank.service;
 
-import com.cherong.mock.domain.bank.model.CardView;
+import com.cherong.mock.domain.bank.model.Card;
 import com.cherong.mock.domain.base.jpa.service.BaseService;
 
 /**
@@ -8,11 +8,11 @@ import com.cherong.mock.domain.base.jpa.service.BaseService;
  * Auth:Paris
  * Date:Apr 7, 2016
 **/
-public interface CardViewService extends BaseService<CardView, String>{
+public interface CardService extends BaseService<Card, Long>{
 	/**
 	 * 根据卡号查询卡片信息
 	 * @param mdcardno
 	 * @return
 	 */
-	public CardView findByMdcardno(String mdcardno);
+	public Card findByMdcardno(String mdcardno);
 }
