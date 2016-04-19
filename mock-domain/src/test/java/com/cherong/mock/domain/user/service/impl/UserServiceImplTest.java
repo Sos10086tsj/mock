@@ -1,6 +1,6 @@
 package com.cherong.mock.domain.user.service.impl;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertNotNull;
 
 import java.util.List;
 
@@ -8,10 +8,10 @@ import javax.annotation.Resource;
 
 import org.junit.Test;
 
+import com.cherong.mock.domain.api.user.model.User;
+import com.cherong.mock.domain.api.user.service.UserService;
+import com.cherong.mock.domain.api.user.vo.Menu;
 import com.cherong.mock.domain.base.BaseBankTestService;
-import com.cherong.mock.domain.user.model.User;
-import com.cherong.mock.domain.user.service.UserService;
-import com.cherong.mock.domain.user.vo.Menu;
 
 /**
  * Description:

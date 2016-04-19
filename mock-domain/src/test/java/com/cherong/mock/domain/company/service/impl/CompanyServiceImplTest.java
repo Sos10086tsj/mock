@@ -1,14 +1,14 @@
 package com.cherong.mock.domain.company.service.impl;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertNotNull;
 
 import javax.annotation.Resource;
 
 import org.junit.Test;
 
+import com.cherong.mock.domain.api.company.model.Company;
+import com.cherong.mock.domain.api.company.service.CompanyService;
 import com.cherong.mock.domain.base.BaseBankTestService;
-import com.cherong.mock.domain.company.model.Company;
-import com.cherong.mock.domain.company.service.CompanyService;
 
 /**
  * Description:

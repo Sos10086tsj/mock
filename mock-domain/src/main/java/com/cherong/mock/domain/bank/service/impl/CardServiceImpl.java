@@ -4,10 +4,10 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
-import com.cherong.mock.domain.bank.model.Card;
+import com.cherong.mock.common.base.jpa.service.BaseServiceImpl;
+import com.cherong.mock.domain.api.bank.model.Card;
+import com.cherong.mock.domain.api.bank.service.CardService;
 import com.cherong.mock.domain.bank.repository.CardRepository;
-import com.cherong.mock.domain.bank.service.CardService;
-import com.cherong.mock.domain.base.jpa.service.BaseServiceImpl;
 
 /**
  * Description:

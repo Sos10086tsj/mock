@@ -1,13 +1,13 @@
 package com.cherong.mock.domain.bank.service.impl;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertNull;
 
 import javax.annotation.Resource;
 
 import org.junit.Test;
 
-import com.cherong.mock.domain.bank.model.CardFq;
-import com.cherong.mock.domain.bank.service.CardFqService;
+import com.cherong.mock.domain.api.bank.model.CardFq;
+import com.cherong.mock.domain.api.bank.service.CardFqService;
 import com.cherong.mock.domain.base.BaseBankTestService;
 
 /**

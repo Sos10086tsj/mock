@@ -1,7 +1,7 @@
 package com.cherong.mock.domain.company.repository;
 
-import com.cherong.mock.domain.base.jpa.repository.BaseRepository;
-import com.cherong.mock.domain.company.model.Company;
+import com.cherong.mock.common.base.jpa.repository.BaseRepository;
+import com.cherong.mock.domain.api.company.model.Company;
 
 /**
  * Description:

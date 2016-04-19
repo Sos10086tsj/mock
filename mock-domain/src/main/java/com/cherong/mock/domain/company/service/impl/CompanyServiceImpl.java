@@ -2,9 +2,9 @@ package com.cherong.mock.domain.company.service.impl;
 
 import org.springframework.stereotype.Service;
 
-import com.cherong.mock.domain.base.jpa.service.BaseServiceImpl;
-import com.cherong.mock.domain.company.model.Company;
-import com.cherong.mock.domain.company.service.CompanyService;
+import com.cherong.mock.common.base.jpa.service.BaseServiceImpl;
+import com.cherong.mock.domain.api.company.model.Company;
+import com.cherong.mock.domain.api.company.service.CompanyService;
 
 /**
  * Description:

@@ -12,23 +12,23 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
-import com.cherong.mock.domain.base.jpa.service.BaseServiceImpl;
-import com.cherong.mock.domain.rabc.constant.SysResourceHierarchy;
-import com.cherong.mock.domain.rabc.model.SysPermission;
-import com.cherong.mock.domain.rabc.model.SysPermissionResOpr;
-import com.cherong.mock.domain.rabc.model.SysResource;
-import com.cherong.mock.domain.rabc.model.SysRole;
-import com.cherong.mock.domain.rabc.model.SysRolePermission;
-import com.cherong.mock.domain.rabc.repository.SysPermissionResOprRepository;
-import com.cherong.mock.domain.rabc.repository.SysResourceRepository;
-import com.cherong.mock.domain.rabc.repository.SysRolePermissionRepository;
-import com.cherong.mock.domain.rabc.repository.SysRoleRepository;
-import com.cherong.mock.domain.user.model.User;
-import com.cherong.mock.domain.user.model.UserRole;
+import com.cherong.mock.common.base.jpa.service.BaseServiceImpl;
+import com.cherong.mock.domain.api.rbac.constant.SysResourceHierarchy;
+import com.cherong.mock.domain.api.rbac.model.SysPermission;
+import com.cherong.mock.domain.api.rbac.model.SysPermissionResOpr;
+import com.cherong.mock.domain.api.rbac.model.SysResource;
+import com.cherong.mock.domain.api.rbac.model.SysRole;
+import com.cherong.mock.domain.api.rbac.model.SysRolePermission;
+import com.cherong.mock.domain.api.user.model.User;
+import com.cherong.mock.domain.api.user.model.UserRole;
+import com.cherong.mock.domain.api.user.service.UserService;
+import com.cherong.mock.domain.api.user.vo.Menu;
+import com.cherong.mock.domain.rbac.repository.SysPermissionResOprRepository;
+import com.cherong.mock.domain.rbac.repository.SysResourceRepository;
+import com.cherong.mock.domain.rbac.repository.SysRolePermissionRepository;
+import com.cherong.mock.domain.rbac.repository.SysRoleRepository;
+import com.cherong.mock.domain.user.SysResourcesComparator;
 import com.cherong.mock.domain.user.repository.UserRoleRepository;
-import com.cherong.mock.domain.user.service.UserService;
-import com.cherong.mock.domain.user.vo.Menu;
-import com.cherong.mock.domain.user.vo.SysResourcesComparator;
 
 /**
  * Description:
