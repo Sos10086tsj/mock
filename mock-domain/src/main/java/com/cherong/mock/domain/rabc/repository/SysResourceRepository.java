@@ -9,5 +9,5 @@ import com.cherong.mock.domain.rabc.model.SysResource;
  * Date:Apr 19, 2016
 **/
 public interface SysResourceRepository extends BaseRepository<SysResource, Long>{
-
+	public SysResource findByCode(String code);
 }

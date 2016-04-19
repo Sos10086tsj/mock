@@ -2,9 +2,13 @@ package com.cherong.mock.domain.user.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import com.cherong.mock.domain.base.jpa.model.BaseEntity;
+import com.cherong.mock.domain.rabc.model.SysRole;
 
 /**
  * Description:
@@ -20,12 +24,16 @@ public class UserRole extends BaseEntity<Long>{
 	private static final long serialVersionUID = 2971780798362447662L;
 
 	@Column(name = "user_id")
-	private String userId;
+	private Long userId;
 	
 	@Column(name = "role_code")
 	private String roleCode;
+	
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "role_code", referencedColumnName = "code", insertable = false, updatable = false)
+	private SysRole role;
 
-	public String getUserId() {
+	public Long getUserId() {
 		return userId;
 	}
 
@@ -33,12 +41,20 @@ public class UserRole extends BaseEntity<Long>{
 		return roleCode;
 	}
 
-	public void setUserId(String userId) {
+	public void setUserId(Long userId) {
 		this.userId = userId;
 	}
 
 	public void setRoleCode(String roleCode) {
 		this.roleCode = roleCode;
+	}
+
+	public SysRole getRole() {
+		return role;
+	}
+
+	public void setRole(SysRole role) {
+		this.role = role;
 	}
 	
 	

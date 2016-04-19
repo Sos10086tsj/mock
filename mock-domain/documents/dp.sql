@@ -188,3 +188,5 @@ ADD PRIMARY KEY (`id`)  COMMENT '';
 ALTER TABLE `mock`.`sys_company` 
 CHANGE COLUMN `status` `status` VARCHAR(10) NULL DEFAULT NULL COMMENT '' ;
 
+ALTER TABLE `mock`.`sys_resouces` 
+ADD COLUMN `parent_code` VARCHAR(45) NULL COMMENT '' AFTER `code`;

@@ -1,5 +1,8 @@
 package com.cherong.mock.domain.rabc.repository;
 
+import java.util.Collection;
+import java.util.List;
+
 import com.cherong.mock.domain.base.jpa.repository.BaseRepository;
 import com.cherong.mock.domain.rabc.model.SysRolePermission;
 
@@ -9,5 +12,5 @@ import com.cherong.mock.domain.rabc.model.SysRolePermission;
  * Date:Apr 19, 2016
 **/
 public interface SysRolePermissionRepository extends BaseRepository<SysRolePermission, Long>{
-
+	public List<SysRolePermission> findByRoleCodeIn(Collection<String> roleCodes);
 }

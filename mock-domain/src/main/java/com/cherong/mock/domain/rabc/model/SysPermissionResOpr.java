@@ -2,6 +2,9 @@ package com.cherong.mock.domain.rabc.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import com.cherong.mock.domain.base.jpa.model.BaseEntity;
@@ -25,6 +28,10 @@ public class SysPermissionResOpr extends BaseEntity<Long>{
 	
 	@Column(name = "res_code")
 	private String resCode;
+	
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "res_code", referencedColumnName = "code", insertable = false, updatable = false)
+	private SysResource resource;
 	
 	@Column(name = "opr_code")
 	private String oprCode;
@@ -51,6 +58,14 @@ public class SysPermissionResOpr extends BaseEntity<Long>{
 
 	public void setOprCode(String oprCode) {
 		this.oprCode = oprCode;
+	}
+
+	public SysResource getResource() {
+		return resource;
+	}
+
+	public void setResource(SysResource resource) {
+		this.resource = resource;
 	}
 	
 	

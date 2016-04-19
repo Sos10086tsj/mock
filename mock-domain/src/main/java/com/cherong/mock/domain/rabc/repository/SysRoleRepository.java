@@ -9,5 +9,5 @@ import com.cherong.mock.domain.rabc.model.SysRole;
  * Date:Apr 19, 2016
 **/
 public interface SysRoleRepository extends BaseRepository<SysRole, Long>{
-
+	
 }
