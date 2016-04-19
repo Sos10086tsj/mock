@@ -3,14 +3,14 @@
 	xmlns="http://java.sun.com/xml/ns/javaee"
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
 	metadata-complete="false" version="3.0">
-  <display-name>Mock Domain</display-name>
-  
-  	<context-param>
+	<display-name>Mock Domain Web</display-name>
+	
+	 <context-param>
 		<param-name>webAppRootKey</param-name>
-		<param-value>mock-domain</param-value>
+		<param-value>mock-domain-web</param-value>
 	</context-param>
-  
-  <context-param>
+
+	<context-param>
 		<param-name>contextConfigLocation</param-name>
 		<param-value>
   		classpath:spring-config.xml
@@ -75,7 +75,7 @@
 		<servlet-name>DruidStatView</servlet-name>
 		<url-pattern>/druid/*</url-pattern>
 	</servlet-mapping>
-	
+
 	<error-page>
 		<error-code>500</error-code>
 		<location>/WEB-INF/jsp/error/500.jsp</location>
@@ -84,5 +84,4 @@
 		<error-code>404</error-code>
 		<location>/WEB-INF/jsp/error/404.jsp</location>
 	</error-page>
-	
 </web-app>

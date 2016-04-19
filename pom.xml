@@ -396,5 +396,6 @@
 		<module>mock-domain</module>
     <module>mock-domain-api</module>
     <module>mock-common</module>
+    <module>mock-domain-web</module>
   </modules>
 </project>

@@ -34,3 +34,16 @@ mock-domain-api/.settings/org.eclipse.jdt.core.prefs
 mock-domain-api/.settings/org.eclipse.m2e.core.prefs
 mock-domain-api/.settings/org.eclipse.wst.common.component
 mock-domain-api/.settings/org.eclipse.wst.common.project.facet.core.xml
+mock-common/.settings/org.eclipse.wst.common.component
+mock-common/.settings/org.eclipse.wst.common.project.facet.core.xml
+mock-domain-web/.classpath
+mock-domain-web/.gitignore
+mock-domain-web/.settings/.jsdtscope
+mock-domain-web/.settings/org.eclipse.core.resources.prefs
+mock-domain-web/.settings/org.eclipse.jdt.core.prefs
+mock-domain-web/.settings/org.eclipse.m2e.core.prefs
+mock-domain-web/.settings/org.eclipse.wst.common.component
+mock-domain-web/.settings/org.eclipse.wst.common.project.facet.core.xml
+mock-domain-web/.settings/org.eclipse.wst.jsdt.ui.superType.container
+mock-domain-web/.settings/org.eclipse.wst.jsdt.ui.superType.name
+mock-domain-web/.settings/org.eclipse.wst.validation.prefs
