@@ -11,7 +11,7 @@ import com.cherong.mock.domain.api.bank.service.BankService;
  * Auth:Paris
  * Date:Apr 19, 2016
 **/
-@Service
+@Service("bankService")
 public class BankServiceImpl extends BaseServiceImpl<Bank, Long> implements BankService{
 
 	@Override
