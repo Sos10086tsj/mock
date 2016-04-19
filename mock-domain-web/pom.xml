@@ -7,9 +7,9 @@
     <artifactId>mock</artifactId>
     <version>1.0.0</version>
   </parent>
-  <artifactId>mock-domain-web</artifactId>
+  <artifactId>mock-web</artifactId>
   <packaging>war</packaging>
-  <name>mock-domain-web Maven Webapp</name>
+  <name>mock-web Maven Webapp</name>
   <url>http://maven.apache.org</url>
   
   <dependencies>
@@ -187,14 +187,14 @@
 	</profiles>
 
 	<build>
-		<finalName>mock-domain-web</finalName>
+		<finalName>mock-web</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.apache.tomcat.maven</groupId>
 				<artifactId>tomcat7-maven-plugin</artifactId>
 				<configuration>
 					<port>8080</port>
-					<path>/mock-domain</path>
+					<path>/mock-web</path>
 					<uriEncoding>UTF-8</uriEncoding>
 					<url>http://localhost:8080/manager/html</url>
 					<server>tomcat7</server>
