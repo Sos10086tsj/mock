@@ -56,6 +56,11 @@ public class Company extends BaseEntity<Long>{
 	public void setStatus(CompanyStatus status) {
 		this.status = status;
 	}
+
+	@Override
+	public String toString() {
+		return "Company [code=" + code + ", name=" + name + ", status=" + status + ", id=" + id + "]";
+	}
 	
 	
 }

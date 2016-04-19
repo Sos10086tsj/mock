@@ -7,7 +7,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import com.cherong.mock.domain.base.jpa.model.BaseEntity;
+import com.cherong.mock.domain.base.jpa.model.BaseVersionEntity;
 import com.cherong.mock.domain.company.model.Company;
 
 /**
@@ -17,7 +17,7 @@ import com.cherong.mock.domain.company.model.Company;
 **/
 @Entity
 @Table(name = "bank")
-public class Bank extends BaseEntity<Long>{
+public class Bank extends BaseVersionEntity<Long>{
 
 	/**
 	 * 
@@ -26,6 +26,9 @@ public class Bank extends BaseEntity<Long>{
 
 	@Column
 	private String name;//银行名称
+	
+	@Column(name ="company_code")
+	private String companyCode;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "company_code", referencedColumnName="code", insertable = false, updatable = false)
@@ -45,6 +48,14 @@ public class Bank extends BaseEntity<Long>{
 
 	public void setCompany(Company company) {
 		this.company = company;
+	}
+
+	public String getCompanyCode() {
+		return companyCode;
+	}
+
+	public void setCompanyCode(String companyCode) {
+		this.companyCode = companyCode;
 	}
 	
 	

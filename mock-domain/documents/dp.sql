@@ -87,3 +87,104 @@ CREATE TABLE `mock`.`bank_card_fq` (
 ALTER TABLE `mock`.`sys_bank` 
 RENAME TO  `mock`.`bank` ;
 
+CREATE TABLE `mock`.`sys_operation` (
+  `id` BIGINT(20) NOT NULL AUTO_INCREMENT COMMENT '',
+  `code` VARCHAR(45) NULL COMMENT '',
+  `name` VARCHAR(45) CHARACTER SET 'utf8' NULL COMMENT '',
+  PRIMARY KEY (`id`)  COMMENT '',
+  UNIQUE INDEX `code_UNIQUE` (`code` ASC)  COMMENT '',
+  INDEX `IDX_SYS_OPR_CODE` (`code` ASC)  COMMENT '');
+
+ALTER TABLE `mock`.`bank` 
+ADD COLUMN `version` BIGINT(20) NULL DEFAULT 0 COMMENT '' AFTER `company_code`;
+
+ALTER TABLE `mock`.`bank_card` 
+ADD COLUMN `version` BIGINT(20) NULL DEFAULT 0 COMMENT '' AFTER `lstlfee`;
+
+ALTER TABLE `mock`.`bank_card_fq` 
+ADD COLUMN `version` BIGINT(20) NULL DEFAULT 0 COMMENT '' AFTER `backfamt`;
+
+CREATE TABLE `mock`.`sys_resouces` (
+  `id` BIGINT(20) NOT NULL AUTO_INCREMENT COMMENT '',
+  `code` VARCHAR(45) NULL COMMENT '',
+  `name` VARCHAR(45) CHARACTER SET 'utf8' NULL COMMENT '',
+  `url` VARCHAR(200) NULL COMMENT '',
+  `hierarchy` INT NULL DEFAULT 999 COMMENT '',
+  `seq` INT NULL DEFAULT 999 COMMENT '',
+  `show` TINYINT(1) NULL DEFAULT 0 COMMENT '',
+  `deleted` TINYINT(1) NULL DEFAULT 0 COMMENT '',
+  PRIMARY KEY (`id`)  COMMENT '');
+
+ALTER TABLE `mock`.`sys_resouces` 
+ADD INDEX `IDX_SYS_RES_CODE` (`code` ASC)  COMMENT '',
+ADD UNIQUE INDEX `code_UNIQUE` (`code` ASC)  COMMENT '';
+
+CREATE TABLE `mock`.`sys_permission` (
+  `id` BIGINT(20) NOT NULL AUTO_INCREMENT COMMENT '',
+  `code` VARCHAR(45) NULL COMMENT '',
+  `name` VARCHAR(45) CHARACTER SET 'utf8' NULL COMMENT '',
+  `description` VARCHAR(200) CHARACTER SET 'utf8' NULL COMMENT '',
+  `show` TINYINT(1) NULL DEFAULT 0 COMMENT '',
+  `deleted` TINYINT(1) NULL DEFAULT 0 COMMENT '',
+  PRIMARY KEY (`id`)  COMMENT '',
+  UNIQUE INDEX `code_UNIQUE` (`code` ASC)  COMMENT '',
+  INDEX `IDX_SYS_PER_CODE` (`code` ASC)  COMMENT '');
+
+CREATE TABLE `mock`.`sys_perm_res_opr` (
+  `permission_code` VARCHAR(45) NULL COMMENT '',
+  `res_code` VARCHAR(45) NULL COMMENT '',
+  `opr_code` VARCHAR(45) NULL COMMENT '',
+  INDEX `IDX_SYS_PERM_RES_OPR_CODE` (`permission_code` ASC)  COMMENT '');
+
+CREATE TABLE `mock`.`sys_role` (
+  `id` BIGINT(20) NOT NULL AUTO_INCREMENT COMMENT '',
+  `code` VARCHAR(45) NULL COMMENT '',
+  `name` VARCHAR(45) CHARACTER SET 'utf8' NULL COMMENT '',
+  `description` VARCHAR(200) CHARACTER SET 'utf8' NULL COMMENT '',
+  `show` TINYINT(1) NULL DEFAULT 0 COMMENT '',
+  `deleted` TINYINT(1) NULL DEFAULT 0 COMMENT '',
+  PRIMARY KEY (`id`)  COMMENT '',
+  UNIQUE INDEX `code_UNIQUE` (`code` ASC)  COMMENT '',
+  INDEX `IDX_SYS_ROLE_CODE` (`code` ASC)  COMMENT '');
+
+CREATE TABLE `mock`.`sys_role_permission` (
+  `role_code` VARCHAR(45) NULL COMMENT '',
+  `permission_code` VARCHAR(45) NULL COMMENT '',
+  INDEX `IDX_SYS_ROIE_PERM_CODE` (`role_code` ASC)  COMMENT '');
+
+CREATE TABLE `mock`.`sys_user` (
+  `id` BIGINT(20) NOT NULL AUTO_INCREMENT COMMENT '',
+  `username` VARCHAR(45) NULL COMMENT '',
+  `name` VARCHAR(45) CHARACTER SET 'utf8' NULL COMMENT '',
+  `version` BIGINT(20) NULL DEFAULT 0 COMMENT '',
+  PRIMARY KEY (`id`)  COMMENT '',
+  INDEX `IDX_SYS_USER_USERNAME` (`username` ASC)  COMMENT '');
+
+ALTER TABLE `mock`.`sys_user` 
+ADD COLUMN `company_code` VARCHAR(45) NULL COMMENT '' AFTER `name`,
+ADD UNIQUE INDEX `username_UNIQUE` (`username` ASC)  COMMENT '';
+
+ALTER TABLE `mock`.`sys_user` 
+ADD COLUMN `salt` VARCHAR(45) NULL COMMENT '' AFTER `username`,
+ADD COLUMN `password` VARCHAR(45) NULL COMMENT '' AFTER `salt`;
+
+CREATE TABLE `mock`.`sys_user_role` (
+  `user_id` BIGINT(20) NULL COMMENT '',
+  `role_code` VARCHAR(45) NULL COMMENT '',
+  INDEX `IDX_SYS_USER_ROLE_ID` (`user_id` ASC)  COMMENT '');
+
+ALTER TABLE `mock`.`sys_user_role` 
+ADD COLUMN `id` BIGINT(20) NOT NULL AUTO_INCREMENT COMMENT '' FIRST,
+ADD PRIMARY KEY (`id`)  COMMENT '';
+
+ALTER TABLE `mock`.`sys_perm_res_opr` 
+ADD COLUMN `id` BIGINT(20) NOT NULL AUTO_INCREMENT COMMENT '' FIRST,
+ADD PRIMARY KEY (`id`)  COMMENT '';
+
+ALTER TABLE `mock`.`sys_role_permission` 
+ADD COLUMN `id` BIGINT(20) NOT NULL AUTO_INCREMENT COMMENT '' FIRST,
+ADD PRIMARY KEY (`id`)  COMMENT '';
+
+ALTER TABLE `mock`.`sys_company` 
+CHANGE COLUMN `status` `status` VARCHAR(10) NULL DEFAULT NULL COMMENT '' ;
+

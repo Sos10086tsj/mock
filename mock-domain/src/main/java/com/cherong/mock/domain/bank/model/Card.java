@@ -13,7 +13,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import com.cherong.mock.domain.bank.constant.CardCurrencyType;
-import com.cherong.mock.domain.base.jpa.model.BaseEntity;
+import com.cherong.mock.domain.base.jpa.model.BaseVersionEntity;
 
 /**
  * Description: CARD_VIEW
@@ -22,7 +22,7 @@ import com.cherong.mock.domain.base.jpa.model.BaseEntity;
 **/
 @Entity
 @Table(name = "bank_card")
-public class Card extends BaseEntity<Long>{
+public class Card extends BaseVersionEntity<Long>{
 	
 	/**
 	 * 
@@ -58,6 +58,9 @@ public class Card extends BaseEntity<Long>{
 	private BigDecimal lstoint;//	表外利息	0.00
 	@Column
 	private BigDecimal lstlfee;//	表外滞纳金	0.00
+	
+	@Column(name = "bank_id")
+	private Long bankId;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "bank_id", referencedColumnName = "id", insertable = false, updatable = false)
@@ -181,6 +184,14 @@ public class Card extends BaseEntity<Long>{
 
 	public void setBank(Bank bank) {
 		this.bank = bank;
+	}
+
+	public Long getBankId() {
+		return bankId;
+	}
+
+	public void setBankId(Long bankId) {
+		this.bankId = bankId;
 	}
 	
 	

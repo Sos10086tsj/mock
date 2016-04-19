@@ -7,7 +7,7 @@ import javax.persistence.MappedSuperclass;
 import javax.persistence.Version;
 
 @MappedSuperclass
-public abstract  class BaseVersionEntity<ID extends Serializable> extends BaseEntity<ID>{
+public abstract  class BaseVersionDeletedEntity<ID extends Serializable> extends BaseEntity<ID>{
 
 	/**
 	 * 
@@ -16,7 +16,10 @@ public abstract  class BaseVersionEntity<ID extends Serializable> extends BaseEn
 	
 	@Version
 	@Column(name = "version")
-	protected Long version = 0l;
+	private Long version = 0l;
+	
+	@Column(name = "deleted", columnDefinition="TINYINT(1)")
+	protected Boolean delete;
 
 	public Long getVersion() {
 		return version;
@@ -24,6 +27,14 @@ public abstract  class BaseVersionEntity<ID extends Serializable> extends BaseEn
 
 	public void setVersion(Long version) {
 		this.version = version;
+	}
+
+	public Boolean getDelete() {
+		return delete;
+	}
+
+	public void setDelete(Boolean delete) {
+		this.delete = delete;
 	}
 	
 	

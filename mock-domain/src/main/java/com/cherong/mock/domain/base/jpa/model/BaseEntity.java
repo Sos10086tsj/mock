@@ -2,6 +2,8 @@ package com.cherong.mock.domain.base.jpa.model;
 
 import java.io.Serializable;
 
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
 
@@ -12,7 +14,7 @@ public abstract  class BaseEntity<ID extends Serializable> extends AbstractEntit
 	 */
 	private static final long serialVersionUID = 361549063336380570L;
 	@Id
-	//@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	protected ID id;
 	
 	@Override

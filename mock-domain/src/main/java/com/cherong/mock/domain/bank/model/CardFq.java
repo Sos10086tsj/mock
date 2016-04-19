@@ -13,20 +13,23 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import com.cherong.mock.domain.bank.constant.CardCurrencyType;
-import com.cherong.mock.domain.base.jpa.model.BaseEntity;
+import com.cherong.mock.domain.base.jpa.model.BaseVersionEntity;
 
 /**
  * Description: FQ_VIEW Auth:Paris Date:Apr 7, 2016
  **/
 @Entity
 @Table(name = "bank_card_fq")
-public class CardFq extends BaseEntity<Long> {
+public class CardFq extends BaseVersionEntity<Long> {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = -3676256422648610947L;
 
+	@Column(name ="card_id")
+	private Long cardId;
+	
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "card_id", referencedColumnName = "id", insertable = false, updatable = false)
 	private Card card;
@@ -330,6 +333,14 @@ public class CardFq extends BaseEntity<Long> {
 
 	public void setBackfamt(BigDecimal backfamt) {
 		this.backfamt = backfamt;
+	}
+
+	public Long getCardId() {
+		return cardId;
+	}
+
+	public void setCardId(Long cardId) {
+		this.cardId = cardId;
 	}
 
 }

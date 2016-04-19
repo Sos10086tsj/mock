@@ -1,0 +1,57 @@
+package com.cherong.mock.domain.rabc.model;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+import com.cherong.mock.domain.base.jpa.model.BaseEntity;
+
+/**
+ * Description: 权限 = 资源 + 操作
+ * Auth:Paris
+ * Date:Apr 19, 2016
+**/
+@Entity
+@Table(name = "sys_perm_res_opr")
+public class SysPermissionResOpr extends BaseEntity<Long>{
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -2474407064449968118L;
+
+	@Column(name = "permission_code")
+	private String permissionCode;
+	
+	@Column(name = "res_code")
+	private String resCode;
+	
+	@Column(name = "opr_code")
+	private String oprCode;
+
+	public String getPermissionCode() {
+		return permissionCode;
+	}
+
+	public String getResCode() {
+		return resCode;
+	}
+
+	public String getOprCode() {
+		return oprCode;
+	}
+
+	public void setPermissionCode(String permissionCode) {
+		this.permissionCode = permissionCode;
+	}
+
+	public void setResCode(String resCode) {
+		this.resCode = resCode;
+	}
+
+	public void setOprCode(String oprCode) {
+		this.oprCode = oprCode;
+	}
+	
+	
+}
