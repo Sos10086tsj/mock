@@ -75,5 +75,11 @@ public class User extends BaseVersionEntity<Long>{
 		this.password = password;
 	}
 
+	@Override
+	public String toString() {
+		return "User [username=" + username + ", name=" + name + ", salt=" + salt + ", password=" + password
+				+ ", companyCode=" + companyCode + ", version=" + version + ", id=" + id + "]";
+	}
+
 	
 }
