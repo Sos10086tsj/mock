@@ -12,6 +12,13 @@ import com.cherong.mock.domain.api.user.vo.Menu;
  * Date:Apr 19, 2016
 **/
 public interface UserService extends BaseService<User, Long>{
+	
+	/**
+	 * 查询客户
+	 * @param username
+	 * @return
+	 */
+	public User findByUsername(String username);
 	/**
 	 * 获取用户菜单
 	 * @param userId

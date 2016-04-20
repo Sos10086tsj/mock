@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.cherong</groupId>
 	<artifactId>mock</artifactId>
@@ -52,18 +53,25 @@
 		<zkclient.version>0.1</zkclient.version>
 		<!-- ehcache -->
 		<ehcache.version>2.9.0</ehcache.version>
-		
+
 		<mysql.connector.verison>5.1.6</mysql.connector.verison>
+
+		<commons-lang.version>2.6</commons-lang.version>
 	</properties>
 
 	<dependencyManagement>
 		<dependencies>
+			<dependency>
+				<groupId>commons-lang</groupId>
+				<artifactId>commons-lang</artifactId>
+				<version>${commons-lang.version}</version>
+			</dependency>
 			<!-- mysql -->
-		<dependency>
-			<groupId>mysql</groupId>
-			<artifactId>mysql-connector-java</artifactId>
-			<version>${mysql.connector.verison}</version>
-		</dependency>
+			<dependency>
+				<groupId>mysql</groupId>
+				<artifactId>mysql-connector-java</artifactId>
+				<version>${mysql.connector.verison}</version>
+			</dependency>
 			<!-- junit -->
 			<dependency>
 				<groupId>junit</groupId>
@@ -89,6 +97,11 @@
 				<scope>provided</scope>
 			</dependency>
 			<!-- spring -->
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-core</artifactId>
+				<version>${spring.version}</version>
+			</dependency>
 			<dependency>
 				<groupId>org.springframework</groupId>
 				<artifactId>spring-context</artifactId>
@@ -392,10 +405,9 @@
 		</pluginManagement>
 	</build>
 	<modules>
-		<module>mock-bank</module>
 		<module>mock-domain</module>
-    <module>mock-domain-api</module>
-    <module>mock-common</module>
-    <module>mock-web</module>
-  </modules>
+		<module>mock-domain-api</module>
+		<module>mock-common</module>
+		<module>mock-web</module>
+	</modules>
 </project>

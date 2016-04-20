@@ -15,40 +15,40 @@
 	<dubbo:service 
 		ref="bankService" 
 		interface="com.cherong.mock.domain.api.bank.service.BankService" 
-		group="${dubbo.cherong.base.group}" 
-		version="${dubbo.cherong.base.version}"  
+		group="${dubbo.cherong.mock.group}" 
+		version="${dubbo.cherong.mock.version}"  
 		timeout="${dubbo.service.timeout}" 
 		retries="${dubbo.service.retries}"/>
 	
 	<dubbo:service 
 		ref="cardFqService" 
 		interface="com.cherong.mock.domain.api.bank.service.CardFqService" 
-		group="${dubbo.cherong.base.group}" 
-		version="${dubbo.cherong.base.version}"  
+		group="${dubbo.cherong.mock.group}" 
+		version="${dubbo.cherong.mock.version}"  
 		timeout="${dubbo.service.timeout}" 
 		retries="${dubbo.service.retries}"/>
 	
 	<dubbo:service 
 		ref="cardService" 
 		interface="com.cherong.mock.domain.api.bank.service.CardService" 
-		group="${dubbo.cherong.base.group}" 
-		version="${dubbo.cherong.base.version}"  
+		group="${dubbo.cherong.mock.group}" 
+		version="${dubbo.cherong.mock.version}"  
 		timeout="${dubbo.service.timeout}" 
 		retries="${dubbo.service.retries}"/>
 		
 	<dubbo:service 
 		ref="companyService" 
 		interface="com.cherong.mock.domain.api.company.service.CompanyService" 
-		group="${dubbo.cherong.base.group}" 
-		version="${dubbo.cherong.base.version}"  
+		group="${dubbo.cherong.mock.group}" 
+		version="${dubbo.cherong.mock.version}"  
 		timeout="${dubbo.service.timeout}" 
 		retries="${dubbo.service.retries}"/>
 		
 	<dubbo:service 
 		ref="userService" 
 		interface="com.cherong.mock.domain.api.user.service.UserService" 
-		group="${dubbo.cherong.base.group}" 
-		version="${dubbo.cherong.base.version}"  
+		group="${dubbo.cherong.mock.group}" 
+		version="${dubbo.cherong.mock.version}"  
 		timeout="${dubbo.service.timeout}" 
 		retries="${dubbo.service.retries}"/>
 

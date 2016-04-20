@@ -4,9 +4,6 @@
         <wb-resource deploy-path="/" source-path="/src/main/webapp" tag="defaultRootSource"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/resources"/>
-        <dependent-module archiveName="mock-domain-api-1.0.0.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/mock-domain-api/mock-domain-api">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
         <dependent-module archiveName="mock-common-1.0.0.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/mock-common/mock-common">
             <dependency-type>uses</dependency-type>
         </dependent-module>

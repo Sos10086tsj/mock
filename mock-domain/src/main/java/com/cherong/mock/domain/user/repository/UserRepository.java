@@ -9,5 +9,5 @@ import com.cherong.mock.domain.api.user.model.User;
  * Date:Apr 19, 2016
 **/
 public interface UserRepository extends BaseRepository<User, Long>{
-
+	public User findByUsername(String username);
 }

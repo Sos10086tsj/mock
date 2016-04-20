@@ -28,6 +28,7 @@ import com.cherong.mock.domain.rbac.repository.SysResourceRepository;
 import com.cherong.mock.domain.rbac.repository.SysRolePermissionRepository;
 import com.cherong.mock.domain.rbac.repository.SysRoleRepository;
 import com.cherong.mock.domain.user.SysResourcesComparator;
+import com.cherong.mock.domain.user.repository.UserRepository;
 import com.cherong.mock.domain.user.repository.UserRoleRepository;
 
 /**
@@ -37,6 +38,8 @@ import com.cherong.mock.domain.user.repository.UserRoleRepository;
 **/
 @Service("userService")
 public class UserServiceImpl extends BaseServiceImpl<User, Long> implements UserService{
+	@Resource
+	private UserRepository repository;
 	@Resource
 	private UserRoleRepository userRoleRepository;
 	@Resource
@@ -155,5 +158,10 @@ public class UserServiceImpl extends BaseServiceImpl<User, Long> implements User
 		}
 		
 		return menus;
+	}
+
+	@Override
+	public User findByUsername(String username){
+		return this.repository.findByUsername(username);
 	}
 }

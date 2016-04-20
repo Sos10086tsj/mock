@@ -15,10 +15,42 @@
 	<!-- 声明需要引用的服务接口  -->
 
 	<dubbo:reference 
+		id="bankService" 
+		interface="com.cherong.mock.domain.api.bank.service.BankService" 
+		group="${dubbo.group.cherong.mock}" 
+		version="${dubbo.version.cherong.mock}" 
+		timeout="${dubbo.service.timeout}" 
+		retries="${dubbo.service.retries}"/>
+	
+	<dubbo:reference 
+		id="cardFqService" 
+		interface="com.cherong.mock.domain.api.bank.service.CardFqService" 
+		group="${dubbo.group.cherong.mock}" 
+		version="${dubbo.version.cherong.mock}" 
+		timeout="${dubbo.service.timeout}" 
+		retries="${dubbo.service.retries}"/>
+		
+	<dubbo:reference 
+		id="cardService" 
+		interface="com.cherong.mock.domain.api.bank.service.CardService" 
+		group="${dubbo.group.cherong.mock}" 
+		version="${dubbo.version.cherong.mock}" 
+		timeout="${dubbo.service.timeout}" 
+		retries="${dubbo.service.retries}"/>
+		
+	<dubbo:reference 
+		id="companyService" 
+		interface="com.cherong.mock.domain.api.company.service.CompanyService" 
+		group="${dubbo.group.cherong.mock}" 
+		version="${dubbo.version.cherong.mock}" 
+		timeout="${dubbo.service.timeout}" 
+		retries="${dubbo.service.retries}"/>
+		
+	<dubbo:reference 
 		id="userService" 
-		interface="com.cherong.service.user.service.UserService" 
-		group="${dubbo.group.cherong.service.user}" 
-		version="${dubbo.version.cherong.service.user}" 
+		interface="com.cherong.mock.domain.api.user.service.UserService" 
+		group="${dubbo.group.cherong.mock}" 
+		version="${dubbo.version.cherong.mock}" 
 		timeout="${dubbo.service.timeout}" 
 		retries="${dubbo.service.retries}"/>
 
