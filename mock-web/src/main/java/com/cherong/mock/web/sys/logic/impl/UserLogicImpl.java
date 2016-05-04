@@ -1,5 +1,7 @@
 package com.cherong.mock.web.sys.logic.impl;
 
+import java.util.List;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +11,7 @@ import com.cherong.mock.common.base.cache.BaseCacheAspect;
 import com.cherong.mock.common.base.util.EncryptionUtil;
 import com.cherong.mock.domain.api.user.model.User;
 import com.cherong.mock.domain.api.user.service.UserService;
+import com.cherong.mock.domain.api.user.vo.Menu;
 import com.cherong.mock.web.exception.constant.ExceptionConstant;
 import com.cherong.mock.web.exception.user.BaseUserException;
 import com.cherong.mock.web.exception.user.UserNotExistException;
@@ -53,6 +56,11 @@ public class UserLogicImpl extends BaseCacheAspect implements UserLogic{
 	public User getUser(String sessionId) {
 		String username = (String)this.get(accessTokenCachePrefix + sessionId);
 		return this.userService.findByUsername(username);
+	}
+
+	@Override
+	public List<Menu> getUserMenu(Long userId) {
+		return this.userService.getUserMenus(userId);
 	}
 
 }

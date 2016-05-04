@@ -1,5 +1,7 @@
 package com.cherong.mock.web.controller;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
@@ -12,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.cherong.mock.domain.api.user.model.User;
+import com.cherong.mock.domain.api.user.vo.Menu;
 import com.cherong.mock.web.exception.constant.ExceptionConstant;
 import com.cherong.mock.web.exception.user.BaseUserException;
 import com.cherong.mock.web.sys.logic.UserLogic;
@@ -57,5 +60,17 @@ public class IndexController {
 		User currentUser = this.userLogic.getUser(request.getSession().getId());
 		model.addAttribute("name", currentUser.getName());
 		return "homepage";
+	}
+	
+	/**
+	 * 获取用户菜单
+	 * @param request
+	 * @return
+	 */
+	@ResponseBody
+	@RequestMapping(value = "menu", method = RequestMethod.GET)
+	public List<Menu> menu(HttpServletRequest request){
+		User currentUser = this.userLogic.getUser(request.getSession().getId());
+		return this.userLogic.getUserMenu(currentUser.getId());
 	}
 }

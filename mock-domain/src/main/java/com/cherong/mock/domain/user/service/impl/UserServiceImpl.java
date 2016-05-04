@@ -126,30 +126,33 @@ public class UserServiceImpl extends BaseServiceImpl<User, Long> implements User
 					menu = Menu.convert2Menu(firstResource);
 				}
 				menu.getSubMenus().add(Menu.convert2Menu(sysResource));
-			}else if (sysResource.getHierarchy().equals(SysResourceHierarchy.THIRD)) {
-				SysResource secondeResource = this.resourceRepository.findByCode(sysResource.getParentCode());
-				SysResource firstResource = this.resourceRepository.findByCode(secondeResource.getParentCode());
-				Menu menu = menuMap.get(firstResource.getCode());
-				Menu secondMenu = null;
-				if (null == menu) {
-					menu = Menu.convert2Menu(firstResource);
-					secondMenu = Menu.convert2Menu(secondeResource);
-				}else {
-					boolean secondMenuExist = false;
-					for (Menu subMenu : menu.getSubMenus()) {
-						if (subMenu.getCode().equals(secondeResource.getCode())) {
-							secondMenuExist = true;
-							secondMenu = subMenu;
-							break;
-						}
-					}
-					if (!secondMenuExist) {
-						secondMenu =  Menu.convert2Menu(secondeResource);
-					}
-				}
-				secondMenu.getSubMenus().add(Menu.convert2Menu(sysResource));
-				menu.getSubMenus().add(secondMenu);
+				menuMap.put(sysResource.getParentCode(), menu);
 			}
+//			else if (sysResource.getHierarchy().equals(SysResourceHierarchy.THIRD)) {
+//				SysResource secondeResource = this.resourceRepository.findByCode(sysResource.getParentCode());
+//				SysResource firstResource = this.resourceRepository.findByCode(secondeResource.getParentCode());
+//				Menu menu = menuMap.get(firstResource.getCode());
+//				Menu secondMenu = null;
+//				if (null == menu) {
+//					menu = Menu.convert2Menu(firstResource);
+//					secondMenu = Menu.convert2Menu(secondeResource);
+//				}else {
+//					boolean secondMenuExist = false;
+//					for (Menu subMenu : menu.getSubMenus()) {
+//						if (subMenu.getCode().equals(secondeResource.getCode())) {
+//							secondMenuExist = true;
+//							secondMenu = subMenu;
+//							break;
+//						}
+//					}
+//					if (!secondMenuExist) {
+//						secondMenu =  Menu.convert2Menu(secondeResource);
+//					}
+//				}
+//				secondMenu.getSubMenus().add(Menu.convert2Menu(sysResource));
+//				menu.getSubMenus().add(secondMenu);
+//				menuMap.put(firstResource.getCode(), menu);
+//			}
 		}
 		
 		List<Menu> menus = new ArrayList<Menu>();

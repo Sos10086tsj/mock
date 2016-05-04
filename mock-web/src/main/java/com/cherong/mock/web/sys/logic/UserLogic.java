@@ -1,6 +1,9 @@
 package com.cherong.mock.web.sys.logic;
 
+import java.util.List;
+
 import com.cherong.mock.domain.api.user.model.User;
+import com.cherong.mock.domain.api.user.vo.Menu;
 import com.cherong.mock.web.exception.user.BaseUserException;
 
 /**
@@ -26,4 +29,11 @@ public interface UserLogic {
 	 * @return
 	 */
 	public User getUser(String sessionId);
+	
+	/**
+	 * 获取菜单
+	 * @param userId
+	 * @return
+	 */
+	public List<Menu> getUserMenu(Long userId);
 }

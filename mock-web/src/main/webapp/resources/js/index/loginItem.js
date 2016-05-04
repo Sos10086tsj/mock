@@ -47,7 +47,7 @@ mock.loginItem = {
 							window.location.href = ctx + "/homepage";
 						},
 						failure : function(form, action){
-							alert("failure")
+							Ext.MessageBox.alert('提醒', '无法登陆！');
 						}
 					});
 				}else{
