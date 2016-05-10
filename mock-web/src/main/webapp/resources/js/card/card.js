@@ -132,31 +132,20 @@ mock.card = {
 	            {
 	            	header: '最后客户交易日',
 	            	xtype: 'datecolumn',
-	            	dataIndex: 'lstbal',
-	            	format: 'm/d/Y',
+	            	dataIndex: 'lsttrand',
+	            	format: 'yyyy-MM-dd',
 	            	editor: {
 	            		allowBlank: false,
 	            		xtype: 'datecolumn'
 	            	}
-//	            ,
-//	            	listeners : {
-//	            		render : function(datefield) {
-////	            			var value = datefield.getValue();
-////	            			if(typeof value == 'undefined' || value.length == 0){
-////	            				datefield.setValue(new Date());
-////	            			}
-//	            		}
-//	            	}
 	            }
-	        ]
-//		,
-//	        
-//	        bbar: Ext.create('Ext.PagingToolbar', {
-//	            store: store,
-//	            displayInfo: true,
-//	            displayMsg: 'Displaying topics {0} - {1} of {2}',
-//	            emptyMsg: "No topics to display"
-//	        })
+	        ],
+	        bbar: Ext.create('Ext.PagingToolbar', {
+	            store: store,
+	            displayInfo: true,
+	            displayMsg: 'Displaying topics {0} - {1} of {2}',
+	            emptyMsg: "No topics to display"
+	        })
 		});
 		
 		store.loadPage(1);

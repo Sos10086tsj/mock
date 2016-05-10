@@ -16,7 +16,8 @@ mock.cardItem = {
 		        {name: 'lstpbal'},//帐户本金	-265,351.00
 		        {name: 'lstiint'},//表内利息	-3,051.00
 		        {name: 'lstoint'},//表外利息	0.00
-		        {name: 'lstlfee'}//表外滞纳金	0.00
+		        {name: 'lstlfee'},//表外滞纳金	0.00
+		        {name: 'lsttrand'}//最后交易日
 		    ]
 		});
 		
