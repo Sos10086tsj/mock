@@ -12,6 +12,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import com.cherong.mock.common.base.jpa.model.BaseVersionEntity;
 import com.cherong.mock.domain.api.bank.constant.CardCurrencyType;
 
@@ -41,6 +43,7 @@ public class Card extends BaseVersionEntity<Long>{
 	@Column
 	private BigDecimal lstbal;//	昨日余额	-268,402.00
 	@Column
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date lsttrand;//	最后客户交易日	2015-06-09
 	@Column
 	private BigDecimal letpaamt;//	最低还款额	13,410.00

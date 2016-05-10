@@ -1,7 +1,6 @@
 package com.cherong.mock.web.controller;
 
 import java.util.Enumeration;
-import java.util.List;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -63,10 +62,8 @@ public class CardController {
 	
 	@ResponseBody
 	@RequestMapping(value = "update")
-	public ResponseVo update(List<Card> cards){
-		for (Card card : cards) {
-			this.cardLogic.update(card);
-		}
+	public ResponseVo update(Card card){
+		this.cardLogic.update(card);
 		return ResponseVo.getSuccessResponse();
 	}
 }
