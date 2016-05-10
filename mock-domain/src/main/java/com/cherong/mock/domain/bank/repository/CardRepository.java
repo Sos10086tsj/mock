@@ -1,5 +1,7 @@
 package com.cherong.mock.domain.bank.repository;
 
+import java.util.List;
+
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
@@ -13,6 +15,8 @@ import com.cherong.mock.domain.api.bank.model.Card;
 **/
 public interface CardRepository extends BaseRepository<Card, Long>{
 	public Card findByMdcardno(String mdcardno);
+	
+	public List<Card> findByMdcardnoLike(String mdcardno);
 	
 	public Page<Card> findByMdcardno(String mdcardno, Pageable pageable);
 	

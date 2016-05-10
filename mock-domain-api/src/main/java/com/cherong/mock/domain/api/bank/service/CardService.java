@@ -1,5 +1,7 @@
 package com.cherong.mock.domain.api.bank.service;
 
+import java.util.List;
+
 import org.springframework.data.domain.Pageable;
 
 import com.cherong.mock.common.base.jpa.service.BaseService;
@@ -34,4 +36,6 @@ public interface CardService extends BaseService<Card, Long>{
 	 * @return
 	 */
 	public Pagination<Card> findPage(CardQueryVo queryVo, Pageable pageable);
+	
+	public List<Card> findByMdcardnoLike(String mdcardno);
 }

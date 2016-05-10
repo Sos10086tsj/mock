@@ -42,5 +42,30 @@ mock.cardItem = {
 		});
 		
 		return cardStore;
+	},
+	
+	mdcardnoStore : function(){
+		var model = Ext.define('MdcardnoModel', {
+	        extend: 'Ext.data.Model',
+	        fields: [
+	            'value',
+	            'label'
+	        ]
+		});
+		
+		var store = Ext.create('Ext.data.Store',{
+			model: model,
+			proxy : {
+				type: 'ajax',
+				url : ctx + '/card/mdcardno/',
+				method : 'get',
+				reader: {
+		             type: 'json',
+		             root : ''
+		         }
+			},
+			autoLoad : false
+		});
+		return store;
 	}
 }

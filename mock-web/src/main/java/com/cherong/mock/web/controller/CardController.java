@@ -1,10 +1,12 @@
 package com.cherong.mock.web.controller;
 
 import java.util.Enumeration;
+import java.util.List;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.commons.lang.StringUtils;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,6 +18,7 @@ import com.cherong.mock.domain.api.bank.vo.CardQueryVo;
 import com.cherong.mock.domain.api.serializable.Pagination;
 import com.cherong.mock.web.bank.logic.CardLogic;
 import com.cherong.mock.web.vo.ResponseVo;
+import com.cherong.mock.web.vo.SelectVo;
 
 /**
  * Description:
@@ -47,17 +50,16 @@ public class CardController {
 	 */
 	@ResponseBody
 	@RequestMapping(value = "store")
-	public Pagination<Card> store(
-//			@RequestParam(value="queryVo", required =false)CardQueryVo queryVo, @RequestParam(value="page", required =false) PageVo pageVo, 
-			HttpServletRequest request){
-		Enumeration<String> params = request.getParameterNames();
-		while (params.hasMoreElements()) {
-			String param = (String) params.nextElement();
-			System.out.println(">>>>>>>>>>>>>");
-			System.out.println(param + ":" + request.getParameter(param));
-		}
+	public Pagination<Card> store(HttpServletRequest request){
 		CardQueryVo queryVo = new CardQueryVo();
-		return this.cardLogic.findPage(queryVo, new PageRequest(Integer.parseInt(request.getParameter("page")) - 1, Integer.parseInt(request.getParameter("limit"))));
+		if (StringUtils.isNotEmpty(request.getParameter("mdcardno"))) {
+			queryVo.setMdcardno(request.getParameter("mdcardno").trim());
+		}
+		int pageNum = Integer.parseInt(request.getParameter("page"));
+		if (pageNum > 0) {
+			pageNum -- ;
+		}
+		return this.cardLogic.findPage(queryVo, new PageRequest(pageNum, Integer.parseInt(request.getParameter("limit"))));
 	}
 	
 	@ResponseBody
@@ -65,5 +67,11 @@ public class CardController {
 	public ResponseVo update(Card card){
 		this.cardLogic.update(card);
 		return ResponseVo.getSuccessResponse();
+	}
+	
+	@ResponseBody
+	@RequestMapping(value = "mdcardno")
+	public List<SelectVo> mdcardno(String query,HttpServletRequest request){
+		return this.cardLogic.findMdcardno(query.trim() + "%");
 	}
 }

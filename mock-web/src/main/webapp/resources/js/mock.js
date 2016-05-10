@@ -16,6 +16,12 @@ var mock = {
 		});
 	},
 	
+	date : {
+		parse : function(v){
+			return Ext.Date.format(new Date(v), 'Y-m-d');
+		}
+	},
+	
 	init : function(){
 		Ext.override(Ext.grid.RowEditor, {  
     		addFieldsForColumn: function(column, initial) {  

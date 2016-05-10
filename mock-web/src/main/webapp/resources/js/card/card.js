@@ -21,7 +21,7 @@ mock.card = {
 	            },
 	            {
 	            	header: '主卡卡号',
-	            	dataIndex: 'accno'
+	            	dataIndex: 'mdcardno'
 	            },
 	            {
 	            	header: '客户编号',
@@ -82,6 +82,33 @@ mock.card = {
 	            {
 	            	header: '最后客户交易日',
 	            	dataIndex: 'lsttrand'
+	            }
+	        ],
+	        tbar : [
+	            {
+	            	xtype: 'combo',
+		        	listConfig:{
+		        		emptyText:'未找到匹配值',  
+		        		loadingText: '正在查找...',
+             			maxHeight:180
+		        	},
+		        	minChars:6,
+             		queryDelay:200,
+             		name:'mdcardno',
+             		fieldLabel:'卡号',
+             		displayField:'label',
+             		valueField:'value',
+             		queryMode:'remote',
+             		hideTrigger: true,
+             		typeAhead:true,
+             		forceSelection:true,
+             		store : mock.cardItem.mdcardnoStore(),
+             		listeners:{
+             			select:function(combo,record,opts) {
+             				var mdcardno = record[0].get("value");
+             				mock.card.reload(store,mdcardno);
+             			}
+             		}
 	            }
 	        ],
 	        bbar: Ext.create('Ext.PagingToolbar', {
@@ -263,6 +290,12 @@ mock.card = {
 		    }]
 		});
 		return editForm;
+	},
+	
+	reload : function(store, mdcardno){
+		var url = ctx + '/card/store?mdcardno=' + mdcardno;
+		store.proxy.url = url;
+		store.reload();
 	}
 };
 

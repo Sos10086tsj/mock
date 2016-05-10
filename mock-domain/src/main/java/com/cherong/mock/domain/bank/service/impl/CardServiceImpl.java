@@ -71,4 +71,9 @@ public class CardServiceImpl extends BaseServiceImpl<Card, Long> implements Card
 		};
 		return condition;
 	}
+
+	@Override
+	public List<Card> findByMdcardnoLike(String mdcardno) {
+		return this.repository.findByMdcardnoLike(mdcardno);
+	}
 }
