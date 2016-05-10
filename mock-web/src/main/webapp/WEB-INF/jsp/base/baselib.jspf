@@ -7,7 +7,7 @@
 <script type="text/javascript" src="${ctx}/resources/components/extjs4.2/ext-all.js"></script>
 <script type="text/javascript" src="${ctx}/resources/components/extjs4.2/local/ext-lang-zh_CN.js"></script>
 
-<!-- ipm -->
+<!-- mock -->
 <script type="text/javascript" src="${ctx}/resources/js/mock.js"></script>
 <script>
 	var ctx = '${ctx}';

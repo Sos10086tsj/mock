@@ -19,6 +19,7 @@ import com.cherong.mock.common.base.jpa.service.BaseServiceImpl;
 import com.cherong.mock.domain.api.bank.model.Card;
 import com.cherong.mock.domain.api.bank.service.CardService;
 import com.cherong.mock.domain.api.bank.vo.CardQueryVo;
+import com.cherong.mock.domain.api.serializable.Pagination;
 import com.cherong.mock.domain.bank.repository.CardRepository;
 
 /**
@@ -42,8 +43,14 @@ public class CardServiceImpl extends BaseServiceImpl<Card, Long> implements Card
 	}
 
 	@Override
-	public Page<Card> findPage(CardQueryVo queryVo, Pageable pageable) {
-		return this.repository.findAll(this.getQuerySpecification(queryVo), pageable);
+	public Pagination<Card> findPage(CardQueryVo queryVo, Pageable pageable) {
+		Page<Card> page = this.repository.findAll(this.getQuerySpecification(queryVo), pageable);
+		Pagination<Card> pagination = new Pagination<Card>();
+		pagination.setPageNum(page.getNumber());
+		pagination.setPageSize(page.getSize());
+		pagination.setTotal(page.getTotalElements());
+		pagination.setData(page.getContent());
+		return pagination;
 	}
 
 

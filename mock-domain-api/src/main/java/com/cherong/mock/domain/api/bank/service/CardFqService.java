@@ -2,12 +2,12 @@ package com.cherong.mock.domain.api.bank.service;
 
 import java.util.List;
 
-import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
 import com.cherong.mock.common.base.jpa.service.BaseService;
 import com.cherong.mock.domain.api.bank.model.CardFq;
 import com.cherong.mock.domain.api.bank.vo.CardFqQueryVo;
+import com.cherong.mock.domain.api.serializable.Pagination;
 
 /**
  * Description:
@@ -35,7 +35,7 @@ public interface CardFqService extends BaseService<CardFq, Long>{
 	 * @param pageable
 	 * @return
 	 */
-	public Page<CardFq> findPage(CardFqQueryVo queryVo, Pageable pageable);
+	public Pagination<CardFq> findPage(CardFqQueryVo queryVo, Pageable pageable);
 	
 	/**
 	 * 获取指定卡片的分期数据

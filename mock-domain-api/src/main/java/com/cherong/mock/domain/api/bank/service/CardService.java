@@ -1,11 +1,11 @@
 package com.cherong.mock.domain.api.bank.service;
 
-import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
 import com.cherong.mock.common.base.jpa.service.BaseService;
 import com.cherong.mock.domain.api.bank.model.Card;
 import com.cherong.mock.domain.api.bank.vo.CardQueryVo;
+import com.cherong.mock.domain.api.serializable.Pagination;
 
 /**
  * Description:	CARD_VIEW DAO层service
@@ -33,5 +33,5 @@ public interface CardService extends BaseService<Card, Long>{
 	 * @param pageable
 	 * @return
 	 */
-	public Page<Card> findPage(CardQueryVo queryVo, Pageable pageable);
+	public Pagination<Card> findPage(CardQueryVo queryVo, Pageable pageable);
 }
