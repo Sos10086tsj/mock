@@ -11,11 +11,6 @@ mock.card = {
 	        loadMask: true,
 	        renderTo: 'js_card_panel',
 	        columns: [
-	             {
-	            	 header: 'ID#',
-	            	 dataIndex: 'id',
-	            	 hidden : true
-	            },
 	            {
 	            	header: '账号',
 	            	dataIndex: 'accno'
@@ -83,6 +78,15 @@ mock.card = {
 	            {
 	            	header: '最后客户交易日',
 	            	dataIndex: 'lsttrand'
+	            },
+	            {
+	            	text:"查看分期",
+	                align:"center",
+	                dataIndex: 'mdcardno',
+	                renderer:function(value,cellmeta,record){
+	                  var returnStr = '<a href="javascript:void(0);" onclick="mock.card.openFqTab(\'' + value + '\')">查看分期</a>';
+	                  return returnStr;
+	                }
 	            }
 	        ],
 	        tbar : [
@@ -328,6 +332,33 @@ mock.card = {
 		var url = ctx + '/card/store?mdcardno=' + mdcardno;
 		store.proxy.url = url;
 		store.reload();
+	},
+	
+	openFqTab : function(mdcardno){
+		var comp = Ext.getCmp('js_global_tab_panel');
+		var openTab = Ext.getCmp('js_tab_' + 'TEST3');
+		if(typeof openTab == 'undefined' || openTab.length == 0){
+        	openTab = Ext.create('Ext.tab.Tab', {
+	        	id : 'js_tab_' + 'TEST3',
+	        	title: '分期管理',
+	        	closable: true,
+	        	loader: { 
+	        		url : ctx + '/cardFq?mdcardno=' + mdcardno, 
+	        		loadMask: 'loading...', 
+	        		autoLoad: true, 
+	        		scripts: true 
+	        		},
+	        	listeners: { 
+	        		activate: function(tab){ 
+	        			tab.loader.load(); 
+	        		} 
+	        	}
+	        });
+        	comp.add(openTab);
+        }else{
+        	openTab.loader.url = ctx + '/cardFq?mdcardno=' + mdcardno;
+        }
+        comp.setActiveTab(openTab);
 	}
 };
 

@@ -12,6 +12,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import com.cherong.mock.common.base.jpa.model.BaseVersionEntity;
 import com.cherong.mock.domain.api.bank.constant.CardCurrencyType;
 
@@ -53,6 +55,7 @@ public class CardFq extends BaseVersionEntity<Long> {
 	@Column
 	private Integer totnum;// 总期数 036
 	@Column
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date workdate;// 申请日期 2014-09-09
 	@Column
 	private BigDecimal thisamt;// 上期扣款金额 122700
@@ -61,6 +64,7 @@ public class CardFq extends BaseVersionEntity<Long> {
 	@Column
 	private Integer errnum;// 累计违约次数 003
 	@Column
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date errdate;// 滞纳金最后收取日期 2015-05-25
 	@Column
 	private BigDecimal thispfee;// 上期扣款手续费 11600
@@ -69,6 +73,7 @@ public class CardFq extends BaseVersionEntity<Long> {
 	@Column
 	private BigDecimal firstamt;// 首期金额 123700
 	@Column
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date ortrxdate;// 原消费日期 2014-09-05
 	@Column
 	private BigDecimal eachpfee;// 每期手续费 11600
@@ -91,6 +96,7 @@ public class CardFq extends BaseVersionEntity<Long> {
 	@Column
 	private Integer conernum;// 连续违约次数 002
 	@Column
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date conerdate;// 上次违约日期 2015-05-25
 	@Column
 	private BigDecimal backfamt;// 已退持卡人手续费 0.00

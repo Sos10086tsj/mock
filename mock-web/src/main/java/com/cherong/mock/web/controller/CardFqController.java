@@ -10,38 +10,41 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.cherong.mock.domain.api.bank.model.Card;
-import com.cherong.mock.domain.api.bank.vo.CardQueryVo;
+import com.cherong.mock.domain.api.bank.model.CardFq;
+import com.cherong.mock.domain.api.bank.vo.CardFqQueryVo;
 import com.cherong.mock.domain.api.serializable.Pagination;
-import com.cherong.mock.web.bank.logic.CardLogic;
+import com.cherong.mock.web.bank.logic.CardFqLogic;
 import com.cherong.mock.web.vo.ResponseVo;
 import com.cherong.mock.web.vo.SelectVo;
 
 /**
- * Description:
+ * Description: 分期action
  * Auth:Paris
- * Date:May 4, 2016
+ * Date:May 12, 2016
 **/
 @Controller
-@RequestMapping(value = "card")
-public class CardController {
+@RequestMapping(value = "cardFq")
+public class CardFqController {
+	
 	@Resource
-	private CardLogic cardLogic;
+	private CardFqLogic cardFqLogic;
 
 	/**
-	 * 进入卡片管理页面
+	 * 进入卡片分期页面
 	 * @param model
 	 * @return
 	 */
 	@RequestMapping(value = "")
-	public String card(Model model){
-		return "card/card";
+	public String cardFq(Model model, @RequestParam(required=false)String mdcardno,HttpServletRequest request){
+		model.addAttribute("mdcardno", mdcardno);
+		return "cardFq/cardFq";
 	}
 	
 	/**
-	 * 获取卡片store
+	 * 获取卡片分期store
 	 * @param queryVo
 	 * @param model
 	 * @param request
@@ -49,8 +52,8 @@ public class CardController {
 	 */
 	@ResponseBody
 	@RequestMapping(value = "store")
-	public Pagination<Card> store(HttpServletRequest request){
-		CardQueryVo queryVo = new CardQueryVo();
+	public Pagination<CardFq> store(HttpServletRequest request){
+		CardFqQueryVo queryVo = new CardFqQueryVo();
 		if (StringUtils.isNotEmpty(request.getParameter("mdcardno"))) {
 			queryVo.setMdcardno(request.getParameter("mdcardno").trim());
 		}
@@ -58,19 +61,19 @@ public class CardController {
 		if (pageNum > 0) {
 			pageNum -- ;
 		}
-		return this.cardLogic.findPage(queryVo, new PageRequest(pageNum, Integer.parseInt(request.getParameter("limit"))));
+		return this.cardFqLogic.findPage(queryVo, new PageRequest(pageNum, Integer.parseInt(request.getParameter("limit"))));
 	}
 	
 	@ResponseBody
 	@RequestMapping(value = "update")
-	public ResponseVo update(Card card){
-		this.cardLogic.update(card);
+	public ResponseVo update(CardFq cardFq){
+		this.cardFqLogic.update(cardFq);
 		return ResponseVo.getSuccessResponse();
 	}
 	
 	@ResponseBody
 	@RequestMapping(value = "mdcardno")
 	public List<SelectVo> mdcardno(String query,HttpServletRequest request){
-		return this.cardLogic.findMdcardno(query.trim() + "%");
+		return this.cardFqLogic.findMdcardno(query.trim() + "%");
 	}
 }
