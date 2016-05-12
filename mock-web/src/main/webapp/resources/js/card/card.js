@@ -1,4 +1,5 @@
 mock.card = {
+	popUpWindow : null,
 	init : function(){
 		var store = mock.cardItem.initStore();
 		var grid =Ext.create('Ext.grid.Panel', {
@@ -109,6 +110,14 @@ mock.card = {
              				mock.card.reload(store,mdcardno);
              			}
              		}
+	            },
+	            '-',
+	            {
+	                text: '开卡',
+	                iconCls: 'employee-add',
+	                handler : function() {
+	                	mock.card.showEditWindow('开卡','', store)
+	                }
 	            }
 	        ],
 	        bbar: Ext.create('Ext.PagingToolbar', {
@@ -119,15 +128,7 @@ mock.card = {
 	        }),
 	        listeners : {
 	        	itemdblclick: function(tablepanel, record, item, index, e, options){
-		        	var editWindow = new Ext.Window({
-		        		title: '卡片管理',
-//		        		width: 600,
-//                        minHeight: 400,
-                        items: [
-                               mock.card.showEditForm('修改',record)
-                        ]
-		        	});
-		        	editWindow.show();
+	        		mock.card.showEditWindow('修改',record, store);
 		        }
 	        }
 		});
@@ -135,7 +136,36 @@ mock.card = {
 		store.loadPage(1);
 	},
 	
-	showEditForm : function(title, record){
+	showEditWindow : function(title,record, store){
+		mock.card.popUpWindow = new Ext.Window({
+    		title: '卡片管理',
+//    		width: 600,
+//            minHeight: 400,
+            items: [
+                   mock.card.showEditForm(title,record, store)
+            ]
+    	});
+		mock.card.popUpWindow.show();
+	},
+	
+	showEditForm : function(title, record, store){
+		var id = '' == record ? '' : record.get('id');
+		var version = '' == record ? 0 : record.get('version');
+		var bankId = '' == record ? 2 : record.get('bankId');
+		var accno = '' == record ? '' : record.get('accno');
+		var mdcardno = '' == record ? '' : record.get('mdcardno');
+		var cino = '' == record ? '' : record.get('cino');
+		var lstpbal = '' == record ? 0 : record.get('lstpbal');
+		var lstbal = '' == record ? 0 : record.get('lstbal');
+		var acpayamt = '' == record ? 0 : record.get('acpayamt');
+		var dtopamt = '' == record ? 0 : record.get('dtopamt');
+		var letpaamt = '' == record ? 0 : record.get('letpaamt');
+		var lstiint = '' == record ? 0 : record.get('lstiint');
+		var lstoint = '' == record ? 0 : record.get('lstoint');
+		var lstlfee = '' == record ? 0 : record.get('lstlfee');
+		var lfeegno = '' == record ? 0 : record.get('lfeegno');
+		var lsttrand = '' == record ? new Date() : new Date(record.get('lsttrand'));
+		
 		var editForm = Ext.create('Ext.form.Panel', {
 		    title: title,
 		    bodyPadding: 5,
@@ -150,37 +180,37 @@ mock.card = {
 		            	fieldLabel: 'ID',
 		            	name: 'id',
 		            	hidden: true,
-		            	value : record.get('id')
+		            	value : id
+		            },
+		            {
+		            	fieldLabel: 'version',
+		            	name: 'version',
+		            	hidden: true,
+		            	value : version
 		            },
 		            {
 		            	fieldLabel: 'BankId',
 		            	name: 'bankId',
 		            	hidden: true,
-		            	value : record.get('bankId')
-		            },
-		            {
-		            	fieldLabel: 'BANK_ID',
-		            	name: 'bankId',
-		            	hidden: true,
-		            	value : record.get('bankId')
+		            	value : bankId
 		            },
 		            {
 		            	fieldLabel: '账号',
 		            	name: 'accno',
 		            	allowBlank: false,
-		            	value : record.get('accno')
+		            	value : accno
 		            },
 		            {
 		            	fieldLabel: '主卡卡号',
 		            	name: 'mdcardno',
 		            	allowBlank: false,
-		            	value : record.get('mdcardno')
+		            	value : mdcardno
 		            },
 		            {
 		            	fieldLabel: '客户编号',
 		            	name: 'cino',
 		            	allowBlank: false,
-		            	value : record.get('cino')
+		            	value : cino
 		            },
 		            {
 		            	xtype : 'numberfield',
@@ -188,7 +218,7 @@ mock.card = {
 		            	fieldLabel: '帐户本金',
 		            	name: 'lstpbal',
 		            	allowBlank: false,
-		            	value : record.get('lstpbal')
+		            	value : lstpbal
 		            },
 		            {
 		            	xtype : 'numberfield',
@@ -196,7 +226,7 @@ mock.card = {
 		            	fieldLabel: '昨日余额',
 		            	name: 'lstbal',
 		            	allowBlank: false,
-		            	value : record.get('lstbal')
+		            	value : lstbal
 		            },
 		            {
 		            	xtype : 'numberfield',
@@ -204,7 +234,7 @@ mock.card = {
 		            	fieldLabel: '帐单应还款金额',
 		            	name: 'acpayamt',
 		            	allowBlank: false,
-		            	value : record.get('acpayamt')
+		            	value : acpayamt
 		            },
 		            {
 		            	xtype : 'numberfield',
@@ -212,7 +242,7 @@ mock.card = {
 		            	fieldLabel: '昨日最优还款额',
 		            	name: 'dtopamt',
 		            	allowBlank: false,
-		            	value : record.get('acpayamt')
+		            	value : dtopamt
 		            },
 		            {
 		            	xtype : 'numberfield',
@@ -220,7 +250,7 @@ mock.card = {
 		            	fieldLabel: '最低还款额',
 		            	name: 'letpaamt',
 		            	allowBlank: false,
-		            	value : record.get('letpaamt')
+		            	value : letpaamt
 		            },
 		            {
 		            	xtype : 'numberfield',
@@ -228,7 +258,7 @@ mock.card = {
 		            	fieldLabel: '表内利息',
 		            	name: 'lstiint',
 		            	allowBlank: false,
-		            	value : record.get('lstiint')
+		            	value : lstiint
 		            },
 		            {
 		            	xtype : 'numberfield',
@@ -236,7 +266,7 @@ mock.card = {
 		            	fieldLabel: '表外利息',
 		            	name: 'lstoint',
 		            	allowBlank: false,
-		            	value : record.get('lstoint')
+		            	value : lstoint
 		            },
 		            {
 		            	xtype : 'numberfield',
@@ -244,7 +274,7 @@ mock.card = {
 		            	fieldLabel: '表外滞纳金',
 		            	name: 'lstlfee',
 		            	allowBlank: false,
-		            	value : record.get('lstlfee')
+		            	value : lstlfee
 		            },
 		            {
 		            	xtype : 'numberfield',
@@ -252,7 +282,7 @@ mock.card = {
 		            	fieldLabel: '滞纳金连续收取次数',
 		            	name: 'lfeegno',
 		            	allowBlank: false,
-		            	value : record.get('lfeegno')
+		            	value : lfeegno
 		            },
 		            {
 		            	fieldLabel: '最后交易日',
@@ -260,7 +290,7 @@ mock.card = {
 		            	allowBlank: false,
 		            	xtype: 'datefield',
 		            	format : 'Y-m-d',
-		            	value : new Date(record.get('lsttrand'))
+		            	value : lsttrand
 //		            	maxValue: new Date()
 		            }
 		            ],
@@ -279,10 +309,12 @@ mock.card = {
 		            if (form.isValid()) {
 		                form.submit({
 		                    success: function(form, action) {
-		                       Ext.Msg.alert('Success', action.result.msg);
+		                       mock.warningResult("提示","保存成功！");
+		                       mock.card.popUpWindow.close();
+		                       store.reload();
 		                    },
 		                    failure: function(form, action) {
-		                        Ext.Msg.alert('Failed', action.result.msg);
+		                        mock.warningResult("提示","保存失败！");
 		                    }
 		                });
 		            }

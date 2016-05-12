@@ -5,6 +5,7 @@ mock.cardItem = {
 		    extend: 'Ext.data.Model',
 		    fields: [
 		        'bankId',
+		        'version',
 		        'id',
 		        'accno',
 		        'mdcardno',
