@@ -72,12 +72,17 @@ public class CardFqServiceImpl extends BaseServiceImpl<CardFq, Long> implements 
 	}
 
 	@Override
-	public List<CardFq> findByCardId(Long cardId) {
+	public CardFq findByCardId(Long cardId) {
 		return this.repository.findByCardIdOrderByLeftnumDesc(cardId);
 	}
 
 	@Override
 	public List<CardFq> findByMdcardnoLike(String mdcardno) {
 		return this.repository.findByMdcardnoLikeOrderByMdcardnoAscLeftnumDesc(mdcardno);
+	}
+
+	@Override
+	public CardFq findByMdcardno(String mdcardno) {
+		return this.repository.findByMdcardno(mdcardno);
 	}
 }

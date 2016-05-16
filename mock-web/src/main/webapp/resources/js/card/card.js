@@ -1,5 +1,7 @@
 mock.card = {
 	popUpWindow : null,
+	fenqiWindow : null,
+	repaymentWindow : null,
 	init : function(){
 		var store = mock.cardItem.initStore();
 		var grid =Ext.create('Ext.grid.Panel', {
@@ -122,6 +124,22 @@ mock.card = {
 	                handler : function() {
 	                	mock.card.showEditWindow('开卡','', store)
 	                }
+	            },
+	            '-',
+	            {
+	            	text: '开始分期',
+	            	iconCls: 'employee-add',
+	                handler : function() {
+	                	mock.card.showFenqiWindow();
+	                }
+	            },
+	            '-',
+	            {
+	            	text: '还款',
+	            	iconCls: 'employee-add',
+	                handler : function() {
+	                	mock.card.showPaymentWindow();
+	                }
 	            }
 	        ],
 	        bbar: Ext.create('Ext.PagingToolbar', {
@@ -138,6 +156,173 @@ mock.card = {
 		});
 		
 		store.loadPage(1);
+	},
+	
+	showPaymentWindow : function(){
+		var editForm = Ext.create('Ext.form.Panel', {
+		    bodyPadding: 5,
+		    url: ctx + '/card/repayment',
+		    layout: 'anchor',
+		    defaults: {
+		        anchor: '100%'
+		    },
+		    defaultType: 'textfield',
+		    items: [
+		            {
+		            	fieldLabel: '卡号',
+		            	name: 'cardNo',
+		            	allowBlank: false,
+		            	value : '622233'
+		            },
+		            {
+		            	xtype : 'numberfield',
+		            	allowDecimals:false,
+		            	fieldLabel: '还款金额',
+		            	name: 'repayment',
+		            	allowBlank: false,
+		            	value : 0
+		            }
+		         ],
+		         buttons: [{
+				        text: '重置',
+				        handler: function() {
+				            this.up('form').getForm().reset();
+				        },
+				        disabled : true
+				    }, {
+				        text: '提交',
+				        handler: function() {
+				            var form = this.up('form').getForm();
+				            if (form.isValid()) {
+				            	form.submit({
+				                    success: function(form, action) {
+				                       mock.warningResult("提示","保存成功！");
+				                       mock.card.repaymentWindow.close();
+				                    },
+				                    failure: function(form, action) {
+				                        mock.warningResult("提示","保存失败！");
+				                    }
+				                });
+				            }
+				        }
+				    }]
+		});
+		mock.card.repaymentWindow = new Ext.Window({
+    		title: '卡片分期',
+            items: [
+                    editForm
+            ]
+    	});
+		mock.card.repaymentWindow.show();
+	},
+	
+	showFenqiWindow : function(){
+		var editForm = Ext.create('Ext.form.Panel', {
+		    bodyPadding: 5,
+		    url: ctx + '/card/initFenqi',
+		    layout: 'anchor',
+		    defaults: {
+		        anchor: '100%'
+		    },
+		    defaultType: 'textfield',
+		    items: [
+		            {
+		            	xtype : 'numberfield',
+		            	fieldLabel: '贷款金额(分)',
+		            	allowDecimals:false,
+		            	name: 'amount',
+		            	allowBlank: false
+		            },
+		            {
+		            	fieldLabel: '卡号',
+		            	name: 'cardNo',
+		            	id : 'js_card_fenqi_cardNo',
+		            	allowBlank: false,
+		            	value : '622233'
+		            },
+		            {
+		            	fieldLabel: '分期日期',
+		            	name: 'creditDate',
+		            	allowBlank: false,
+		            	xtype: 'datefield',
+		            	format : 'Y-m-d'
+		            },
+		            {
+		            	xtype : 'numberfield',
+		            	allowDecimals:false,
+		            	fieldLabel: '期数',
+		            	name: 'period',
+		            	allowBlank: false,
+		            	value : 0
+		            },
+		            {
+		            	xtype : 'numberfield',
+		            	fieldLabel: '费率',
+		            	decimalPrecision: 2,
+		            	name: 'ratio',
+		            	allowBlank: false,
+		            	value : 0.00
+		            }
+		         ],
+		         buttons: [{
+				        text: '重置',
+				        handler: function() {
+				            this.up('form').getForm().reset();
+				        },
+				        disabled : true
+				    }, {
+				        text: '提交',
+				        handler: function() {
+				            var form = this.up('form').getForm();
+				            if (form.isValid()) {
+				            	//检查卡号是否存在
+				            	if(mock.card.cardNoExist(Ext.getCmp('js_card_fenqi_cardNo').getValue())){
+				            		return false;
+				            	}else{
+				            		form.submit({
+					                    success: function(form, action) {
+					                       mock.warningResult("提示","保存成功！");
+					                       mock.card.fenqiWindow.close();
+					                    },
+					                    failure: function(form, action) {
+					                        mock.warningResult("提示","保存失败！");
+					                    }
+					                });
+				            	}
+				            }
+				        }
+				    }]
+		});
+		mock.card.fenqiWindow = new Ext.Window({
+    		title: '卡片分期',
+            items: [
+                    editForm
+            ]
+    	});
+		mock.card.fenqiWindow.show();
+	},
+	
+	cardNoExist : function(cardNo){
+		Ext.Ajax.request({
+		    url: ctx + '/card/checkCardNo',
+		    timeout: 60000,
+		    async:false,
+		    params: {
+		    	cardNo: cardNo
+		    },
+		    success: function(response){
+		    	var result = Ext.JSON.decode(response.responseText);
+		    	if(result.errorMsg != null){
+		    		mock.warningResult("提示",result.errorMsg);
+		    		return true;
+		    	}else{
+		    		return false;
+		    	}
+		    },
+		    failure: function(form, action) {
+		    	return true;
+		    }
+		});
 	},
 	
 	showEditWindow : function(title,record, store){

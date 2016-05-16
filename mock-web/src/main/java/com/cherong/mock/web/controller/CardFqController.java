@@ -74,6 +74,6 @@ public class CardFqController {
 	@ResponseBody
 	@RequestMapping(value = "mdcardno")
 	public List<SelectVo> mdcardno(String query,HttpServletRequest request){
-		return this.cardFqLogic.findMdcardno(query.trim() + "%");
+		return this.cardFqLogic.findMdcardnoLike(query.trim() + "%");
 	}
 }

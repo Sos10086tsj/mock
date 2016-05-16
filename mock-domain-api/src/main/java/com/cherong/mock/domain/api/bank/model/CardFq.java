@@ -62,7 +62,7 @@ public class CardFq extends BaseVersionEntity<Long> {
 	@Column
 	private BigDecimal realamt;// 已入账金额 1105300
 	@Column
-	private Integer errnum;// 累计违约次数 003
+	private Integer errnum = 0;// 累计违约次数 003
 	@Column
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date errdate;// 滞纳金最后收取日期 2015-05-25
@@ -78,8 +78,6 @@ public class CardFq extends BaseVersionEntity<Long> {
 	@Column
 	private BigDecimal eachpfee;// 每期手续费 11600
 	@Column
-	private BigDecimal ortrxamt;// 原消费金额 4418200
-	@Column
 	private BigDecimal firstpfee;// 首期手续费 13287
 	@Column
 	private Integer leftnum;// 剩余期数 027
@@ -94,12 +92,22 @@ public class CardFq extends BaseVersionEntity<Long> {
 	@Column
 	private BigDecimal lstauamt;// 昨日授权本金 3,435,600.00
 	@Column
-	private Integer conernum;// 连续违约次数 002
+	private Integer conernum = 0;// 连续违约次数 002
 	@Column
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date conerdate;// 上次违约日期 2015-05-25
 	@Column
 	private BigDecimal backfamt;// 已退持卡人手续费 0.00
+	@Column
+	private BigDecimal overdueFine = new BigDecimal(0);//滞纳金
+
+	public BigDecimal getOverdueFine() {
+		return overdueFine;
+	}
+
+	public void setOverdueFine(BigDecimal overdueFine) {
+		this.overdueFine = overdueFine;
+	}
 
 	public Card getCard() {
 		return card;
@@ -175,10 +183,6 @@ public class CardFq extends BaseVersionEntity<Long> {
 
 	public BigDecimal getEachpfee() {
 		return eachpfee;
-	}
-
-	public BigDecimal getOrtrxamt() {
-		return ortrxamt;
 	}
 
 	public BigDecimal getFirstpfee() {
@@ -295,10 +299,6 @@ public class CardFq extends BaseVersionEntity<Long> {
 
 	public void setEachpfee(BigDecimal eachpfee) {
 		this.eachpfee = eachpfee;
-	}
-
-	public void setOrtrxamt(BigDecimal ortrxamt) {
-		this.ortrxamt = ortrxamt;
 	}
 
 	public void setFirstpfee(BigDecimal firstpfee) {

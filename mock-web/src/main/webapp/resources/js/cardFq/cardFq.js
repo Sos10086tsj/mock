@@ -4,7 +4,7 @@ mock.cardFq = {
 		var store = mock.cardFqItem.initStore();
 		var grid =Ext.create('Ext.grid.Panel', {
 			width: 1200,
-//	        height: 500,
+	        height: 500,
 	        title: '卡片信息管理',
 	        store: store,
 	        frame: true,
@@ -113,12 +113,6 @@ mock.cardFq = {
 	            {
 	            	header: '原始消费日期',
 	            	dataIndex: 'ortrxdate',
-	            },
-	            {
-	            	header: '原始消费金额',
-	            	xtype: 'numbercolumn',
-	            	dataIndex: 'ortrxamt',
-	            	format: '¥0,0'
 	            },
 	            {
 	            	header: '已还本金',
@@ -239,7 +233,6 @@ mock.cardFq = {
 		var firstamt = '' == record ? 0 : record.get('firstamt');
 		var firstpfee = '' == record ? 0 : record.get('firstpfee');
 		var ortrxdate = '' == record ? new Date() : new Date(record.get('ortrxdate'));
-		var ortrxamt = '' == record ? 0 : record.get('ortrxamt');
 		var paybamt = '' == record ? 0 : record.get('paybamt');
 		var paybfee = '' == record ? 0 : record.get('paybfee');
 		var unpaybamt = '' == record ? 0 : record.get('paybfee');
@@ -422,13 +415,6 @@ mock.cardFq = {
 		            	format : 'Y-m-d',
 		            	value : ortrxdate,
 		            	maxValue: new Date()
-		            },
-		            {
-		            	xtype : 'numberfield',
-		            	fieldLabel: '原始消费金额',
-		            	name: 'ortrxamt',
-		            	allowBlank: false,
-		            	value : ortrxamt
 		            },
 		            {
 		            	xtype : 'numberfield',

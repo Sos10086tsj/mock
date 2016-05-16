@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.Resource;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
@@ -31,6 +34,9 @@ import com.cherong.mock.domain.bank.repository.CardRepository;
 public class CardServiceImpl extends BaseServiceImpl<Card, Long> implements CardService{
 	@Resource
 	private CardRepository repository;
+	
+	@PersistenceContext
+	private EntityManager em;
 
 	@Override
 	public Card saveCard(Card card) {
@@ -75,5 +81,28 @@ public class CardServiceImpl extends BaseServiceImpl<Card, Long> implements Card
 	@Override
 	public List<Card> findByMdcardnoLike(String mdcardno) {
 		return this.repository.findByMdcardnoLike(mdcardno);
+	}
+
+	@Override
+	public List<Card> findAll() {
+		return this.repository.findAll();
+	}
+
+	@Override
+	public Card findByMdcardno(String mdcardno) {
+		return this.repository.findByMdcardno(mdcardno);
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Card> findAllFqCard() {
+		StringBuffer sqlBuffer = new StringBuffer();
+		sqlBuffer.append(" select bc.* from  ")
+		.append(" bank_card bc, ")
+		.append(" bank_card_fq bcf ")
+		.append(" where bcf.mdcardno = bc.mdcardno ")
+		.append(" and bcf.leftnum != 0 ");
+		Query query = em.createNativeQuery(sqlBuffer.toString(), Card.class);
+		return query.getResultList();
 	}
 }

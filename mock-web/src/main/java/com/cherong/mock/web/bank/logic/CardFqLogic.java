@@ -19,5 +19,7 @@ public interface CardFqLogic {
 	
 	public void update(CardFq cardFq);
 	
-	public List<SelectVo> findMdcardno(String mdcardno);
+	public List<SelectVo> findMdcardnoLike(String mdcardno);
+	
+	public CardFq findByMdcardno(String mdcardno);
 }

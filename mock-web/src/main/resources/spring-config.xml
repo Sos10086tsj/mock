@@ -27,6 +27,7 @@
 			expression="org.springframework.stereotype.Controller" />
 	</context:component-scan>
 	<context:annotation-config />
+	<task:annotation-driven />
 	
 	<import resource="dubbo-consumer.xml" />
 	

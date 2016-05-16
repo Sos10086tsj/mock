@@ -42,7 +42,9 @@ public interface CardFqService extends BaseService<CardFq, Long>{
 	 * @param cardId
 	 * @return
 	 */
-	public List<CardFq> findByCardId(Long cardId);
+	public CardFq findByCardId(Long cardId);
 	
 	public List<CardFq> findByMdcardnoLike(String mdcardno);
+	
+	public CardFq findByMdcardno(String mdcardno);
 }

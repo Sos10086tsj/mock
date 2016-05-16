@@ -35,7 +35,6 @@ mock.cardFqItem = {
 		        	} 
 		        },// 原消费日期 2014-09-05
 		        'eachpfee', //每期手续费 11600
-		        'ortrxamt',// 原消费金额 4418200
 		        'firstpfee',//首期手续费 13287
 		        'leftnum',// 剩余期数 027
 		        'paybamt',// 分期付款已还款本金 974249

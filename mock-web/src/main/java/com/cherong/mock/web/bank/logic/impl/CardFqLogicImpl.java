@@ -36,12 +36,17 @@ public class CardFqLogicImpl implements CardFqLogic{
 	}
 	
 	@Override
-	public List<SelectVo> findMdcardno(String mdcardno) {
+	public List<SelectVo> findMdcardnoLike(String mdcardno) {
 		List<SelectVo> vos = new ArrayList<SelectVo>();
 		List<CardFq> cards =  this.cardFqService.findByMdcardnoLike(mdcardno);
 		for (CardFq cardFq : cards) {
 			vos.add(new SelectVo(cardFq.getMdcardno(), cardFq.getMdcardno()));
 		}
 		return vos;
+	}
+
+	@Override
+	public CardFq findByMdcardno(String mdcardno) {
+		return this.cardFqService.findByMdcardno(mdcardno);
 	}
 }

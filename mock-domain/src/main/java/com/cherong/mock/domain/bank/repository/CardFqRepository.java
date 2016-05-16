@@ -11,7 +11,9 @@ import com.cherong.mock.domain.api.bank.model.CardFq;
  * Date:Apr 7, 2016
 **/
 public interface CardFqRepository extends BaseRepository<CardFq, Long>{
-	public List<CardFq> findByCardIdOrderByLeftnumDesc(Long cardId);
+	public CardFq findByCardIdOrderByLeftnumDesc(Long cardId);
 	
 	public List<CardFq> findByMdcardnoLikeOrderByMdcardnoAscLeftnumDesc(String mdcardno);
+	
+	public CardFq findByMdcardno(String mdcardno);
 }

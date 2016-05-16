@@ -38,4 +38,10 @@ public interface CardService extends BaseService<Card, Long>{
 	public Pagination<Card> findPage(CardQueryVo queryVo, Pageable pageable);
 	
 	public List<Card> findByMdcardnoLike(String mdcardno);
+	
+	public List<Card> findAll();
+	
+	public Card findByMdcardno(String mdcardno);
+	
+	public List<Card> findAllFqCard();
 }
