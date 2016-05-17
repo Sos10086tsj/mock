@@ -2,10 +2,13 @@ mock.cardFq = {
 	popUpWindow : null,
 	init : function(){
 		var store = mock.cardFqItem.initStore();
+		
+		var height = $("#js_tab_TEST3").height()
+		var width = $("#js_tab_TEST3").width();
+		
 		var grid =Ext.create('Ext.grid.Panel', {
-			width: 1200,
-	        height: 500,
-	        title: '卡片信息管理',
+			width: width,
+	        height: height,
 	        store: store,
 	        frame: true,
 	        loadMask: true,

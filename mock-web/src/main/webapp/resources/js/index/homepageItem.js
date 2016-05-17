@@ -84,7 +84,7 @@ mock.homepageItem = {
 			region: 'west',
             stateId: 'navigation-panel',
             id: 'west-panel',
-            title: 'West',
+            title: '菜单',
             split: true,
             width: 200,
             minWidth: 175,
@@ -146,7 +146,7 @@ mock.homepageItem = {
             maxSize: 200,
             collapsible: true,
             collapsed: true,
-            title: 'East',
+            title: '扩展栏',
             margins: '0 0 0 0'
         });
 		return east;

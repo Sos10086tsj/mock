@@ -2,16 +2,22 @@ mock.card = {
 	popUpWindow : null,
 	fenqiWindow : null,
 	repaymentWindow : null,
+	gridStore : null,
 	init : function(){
 		var store = mock.cardItem.initStore();
+		mock.card.gridStore = store;
+		
+		var height = $("#js_tab_TEST2").height()
+		var width = $("#js_tab_TEST2").width();
+		
 		var grid =Ext.create('Ext.grid.Panel', {
-//			width: 700,
-//	        height: 500,
-	        title: '卡片信息管理',
+			width: width,
+	        height: height,
 	        store: store,
 	        frame: true,
 	        loadMask: true,
 	        renderTo: 'js_card_panel',
+	        autoScroll : true,
 	        columns: [
 	            {
 	            	header: '账号',
@@ -198,6 +204,8 @@ mock.card = {
 				                    success: function(form, action) {
 				                       mock.warningResult("提示","保存成功！");
 				                       mock.card.repaymentWindow.close();
+				                       //刷新store
+				                       mock.card.gridStore.reload();
 				                    },
 				                    failure: function(form, action) {
 				                        mock.warningResult("提示","保存失败！");
@@ -283,6 +291,8 @@ mock.card = {
 					                    success: function(form, action) {
 					                       mock.warningResult("提示","保存成功！");
 					                       mock.card.fenqiWindow.close();
+					                     //刷新store
+					                       mock.card.gridStore.reload();
 					                    },
 					                    failure: function(form, action) {
 					                        mock.warningResult("提示","保存失败！");

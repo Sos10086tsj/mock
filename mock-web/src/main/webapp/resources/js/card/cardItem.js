@@ -39,7 +39,7 @@ mock.cardItem = {
 		             totalProperty: 'total'
 		         }
 			},
-			autoLoad : false
+			autoLoad : true
 		});
 		
 		return cardStore;
