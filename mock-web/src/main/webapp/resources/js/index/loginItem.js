@@ -2,6 +2,7 @@ mock.loginItem = {
 	//登录框用户名
 	initUsername : function(){
 		var username = new Ext.form.TextField({
+			id : 'js_login_username',
 			width : 200,
 			allowBlank : false,
 			maxLength : 20,
@@ -19,6 +20,7 @@ mock.loginItem = {
 	//登录框密码
 	initPassword : function(){
 		var pass = new Ext.form.TextField({
+			id : 'js_login_password',
 			width : 200,
 			allowBlank : false,
 			maxLength : 20,
@@ -35,6 +37,7 @@ mock.loginItem = {
 	//登陆按钮
 	initLoginBtn : function(){
 		var loginBtn = new Ext.Button({
+			id : 'js_login_submit_btn',
 			text: mock.loginLabel.loginText,
 			handler: function(){
 				if (mock.login.loginForm.getForm().isValid()){

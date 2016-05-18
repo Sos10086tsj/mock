@@ -125,6 +125,7 @@ mock.card = {
 	            },
 	            '-',
 	            {
+	            	id:'js_card_open_card_btn',
 	                text: '开卡',
 	                iconCls: 'employee-add',
 	                handler : function() {
@@ -133,6 +134,7 @@ mock.card = {
 	            },
 	            '-',
 	            {
+	            	id:'js_card_payment_btn',
 	            	text: '开始分期',
 	            	iconCls: 'employee-add',
 	                handler : function() {
@@ -141,6 +143,7 @@ mock.card = {
 	            },
 	            '-',
 	            {
+	            	id:'js_card_repayment_btn',
 	            	text: '还款',
 	            	iconCls: 'employee-add',
 	                handler : function() {
@@ -175,12 +178,14 @@ mock.card = {
 		    defaultType: 'textfield',
 		    items: [
 		            {
+		            	id : 'js_card_pay_win_cardNo',
 		            	fieldLabel: '卡号',
 		            	name: 'cardNo',
 		            	allowBlank: false,
 		            	value : '622233'
 		            },
 		            {
+		            	id : 'js_card_pay_win_repayment',
 		            	xtype : 'numberfield',
 		            	allowDecimals:false,
 		            	fieldLabel: '还款金额',
@@ -196,6 +201,7 @@ mock.card = {
 				        },
 				        disabled : true
 				    }, {
+				    	id : 'js_card_pay_win_sub_btn',
 				        text: '提交',
 				        handler: function() {
 				            var form = this.up('form').getForm();
@@ -235,6 +241,7 @@ mock.card = {
 		    defaultType: 'textfield',
 		    items: [
 		            {
+		            	id:'js_fenqi_win_amount',
 		            	xtype : 'numberfield',
 		            	fieldLabel: '贷款金额(分)',
 		            	allowDecimals:false,
@@ -249,6 +256,7 @@ mock.card = {
 		            	value : '622233'
 		            },
 		            {
+		            	id : 'js_card_fenqi_creditDate',
 		            	fieldLabel: '分期日期',
 		            	name: 'creditDate',
 		            	allowBlank: false,
@@ -256,6 +264,7 @@ mock.card = {
 		            	format : 'Y-m-d'
 		            },
 		            {
+		            	id : 'js_card_fenqi_period',
 		            	xtype : 'numberfield',
 		            	allowDecimals:false,
 		            	fieldLabel: '期数',
@@ -264,6 +273,7 @@ mock.card = {
 		            	value : 0
 		            },
 		            {
+		            	id : 'js_card_fenqi_ratio',
 		            	xtype : 'numberfield',
 		            	fieldLabel: '费率',
 		            	decimalPrecision: 2,
@@ -279,6 +289,7 @@ mock.card = {
 				        },
 				        disabled : true
 				    }, {
+				    	id : 'js_card_fenqi_sub_btn',
 				        text: '提交',
 				        handler: function() {
 				            var form = this.up('form').getForm();
@@ -394,18 +405,21 @@ mock.card = {
 		            	value : bankId
 		            },
 		            {
+		            	id:'js_popup_win_accno',
 		            	fieldLabel: '账号',
 		            	name: 'accno',
 		            	allowBlank: false,
 		            	value : accno
 		            },
 		            {
+		            	id:'js_popup_win_mdcardno',
 		            	fieldLabel: '主卡卡号',
 		            	name: 'mdcardno',
 		            	allowBlank: false,
 		            	value : mdcardno
 		            },
 		            {
+		            	id:'js_popup_win_cino',
 		            	fieldLabel: '客户编号',
 		            	name: 'cino',
 		            	allowBlank: false,
@@ -500,6 +514,7 @@ mock.card = {
 		        },
 		        disabled : true
 		    }, {
+		    	id:'js_popup_win_sub_btn',
 		        text: '提交',
 //		        formBind: true,
 //		        disabled: true,

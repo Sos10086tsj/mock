@@ -28,6 +28,7 @@ mock.homepageItem = {
 					var subMenuBtns = new Array();
 					$(v.subMenus).each(function(subK, subV){
 						var btn = Ext.create('Ext.Button', {
+							id : 'js_menu_' + subV.code + '_btn',
 						    text: subV.name,
 						    handler: function() {
 						        var comp = Ext.getCmp('js_global_tab_panel');
